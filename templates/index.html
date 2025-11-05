@@ -1,10 +1,114 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Nombre la pagina
+Nombre la pagina
 {% endblock titulo %}
 
 {% block contenido %}
+
+<div class="row container-center"></div>
+<p></p>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+<div class="row"><p></p></div>
+
+
+
+
+<div class="row container-center ">
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+      <div class="card-header">Edad</div>
+      <div class="card-body">
+        <h5 class="card-title">Ingresa tu edad</h5>
+        <p class="card-text"><input type="number" class="form-control" id="edad" name="edad" placeholder="" required
+            value="{{ request.form.get('edad','')}}"></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+      <div class="card-header">Ingresa tu genero</div>
+      <div class="card-body">
+        <h5 class="card-title">Selecciona tu genero</h5>
+        <p class="card-text">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="genero" value="hombre" required
+            value="{{ request.form.get('genero','')}}">
+          <label class="form-check-label" for="hombre">Hombre</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="genero" id="genero" value="mujer" required
+            value="{{ request.form.get('genero','')}}">
+          <label class="form-check-label" for="mujer">Mujer</label>
+        </div>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+      <div class="card-header">Actividad fisica</div>
+      <div class="card-body">
+        <h5 class="card-title">Que tan activo eres</h5>
+        <p class="card-text"><select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona tu actividad</option>
+            <option value="1">Sedentario</option>
+            <option value="2">Actividad Ligera</option>
+            <option value="3">Actividad Moderada</option>
+            <option value="3">Actividad Alta</option>
+          </select></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row container-center">
+    <div class="col-sm-6 col-md-4">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Peso</div>
+        <div class="card-body">
+          <h5 class="card-title">Ingresa tu peso en kg</h5>
+          <p class="card-text"><input type="text" class="form-control" id="peso" name="peso" placeholder="" required
+              value="{{ request.form.get('peso','')}}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Calcula</div>
+        <div class="card-body">
+          <h5 class="card-title">Con el siguiente boton calcularas tu TMB, Get y IMC</h5>
+          <p class="card-text"><div class="row">
+        <div class="col-3"></div>
+        <button type="submit" class="btn btn-success col-12">Calcula</button>
+      </div></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Altura</div>
+        <div class="card-body">
+          <h5 class="card-title">Ingresa tu altura en cm</h5>
+          <p class="card-text"><input type="text" class="form-control" id="altura" name="altura" placeholder="" required
+              value="{{ request.form.get('altura','')}}"></p>
+        </div>
+      </div>
+      </div>
+      
+    </div>
     
-{% endblock contenido %}
-    
+    {% endblock contenido %}
