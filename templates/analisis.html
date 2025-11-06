@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Nombre la pagina
+{% endblock titulo %}
+
+
+{% block contenido %}
+<div class="row container-center"></div>
+<p></p>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 col-md-4">
+        <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Nombre de la receta</div>
+            <div class="card-body">
+                <h5 class="card-title">Ingresa el nombre de la receta</h5>
+                <p class="card-text"><input type="text" class="form-control" id="nombreReceta" name="nombreReceta"
+                        placeholder="" required value="{{ request.form.get('nombreReceta','')}}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Ingredientes principales</div>
+            <div class="card-body">
+                <h5 class="card-title">Ingresa los principales ingredientes</h5>
+                <p class="card-text"><input type="text" class="form-control" id="ingredientesP" name="ingredientesP"
+                        placeholder="" required value="{{ request.form.get('ingredientesP','')}}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Ingredientes Extras</div>
+            <div class="card-body">
+                <h5 class="card-title">Ingresar ingredientes extra es opcional</h5>
+                <p class="card-text"><input type="text" class="form-control" id="ingredientesE" name="ingredientesE"
+                        placeholder="" required value="{{ request.form.get('ingredientesE','')}}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-1 col-1"></div>
+    <div class="col-sm-5 col-md-4">
+        <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Mostrar composicion</div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"><button type="submit" class="btn btn-success col-12">Composicion</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-5 col-md-4">
+        <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Genera receta alternativa</div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"><button type="submit" class="btn btn-success col-12">Receta alternativa</button></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock contenido %}

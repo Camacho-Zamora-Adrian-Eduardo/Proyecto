@@ -8,27 +8,113 @@ Nombre la pagina
 
 <div class="row container-center"></div>
 <p></p>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
-<div class="row"><p></p></div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
+<div class="row">
+  <p></p>
+</div>
 
 
 
 
-<div class="row container-center ">
-  
+<div class="row justify-container-center ">
+
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-4 col-6">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Objetivo</div>
+        <div class="card-body">
+          <h5 class="card-title">Cual es tu objetivo a alcanzar</h5>
+          <p class="card-text"><select class="form-select" aria-label="Default select example">
+              <option selected>Selecciona tu objetivo</option>
+              <option value="1">Bajar de peso</option>
+              <option value="2">Aumentar masa muscular</option>
+              <option value="3">Mantener peso</option>
+              <option value="4">Mejorar digestión</option>
+              <option value="5">Controlar una condición (diabetes, hipertensión, etc)</option>
+            </select></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-md-4">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Preferencias</div>
+        <div class="card-body">
+          <h5 class="card-title">Ingresa alimentos que te disgustan</h5>
+          <p class="card-text"><input type="text" class="form-control" id="alimentosDisgusto" name="alimentosDisgust"
+              placeholder="" required value="{{ request.form.get('alimentosDisgust','')}}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+        <div class="card-header">Restricciones</div>
+        <div class="card-body">
+          <h5 class="card-title">Ingresa alimentos a los que eres alergico</h5>
+          <p class="card-text"><input type="text" class="form-control" id="alimentosAlergico" name="alimentosAlergico"
+              placeholder="" required value="{{ request.form.get('alimentosAlergico','')}}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+    <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
+      <div class="card-header">Nivel de experiencia</div>
+      <div class="card-body">
+        <h5 class="card-title">¿Cual es tu nivel de experiencia en la cocina?</h5>
+        <p class="card-text"><select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona tu nivel</option>
+            <option value="1">Principiante</option>
+            <option value="2">Intermedio</option>
+            <option value="3">Avanzado</option>
+            <option value="4">Experto</option>
+          </select></p>
+      </div>
+    </div>
+  </div>
+
   <div class="col-sm-6 col-md-4">
     <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
       <div class="card-header">Edad</div>
@@ -69,11 +155,12 @@ Nombre la pagina
             <option value="1">Sedentario</option>
             <option value="2">Actividad Ligera</option>
             <option value="3">Actividad Moderada</option>
-            <option value="3">Actividad Alta</option>
+            <option value="4">Actividad Alta</option>
           </select></p>
       </div>
     </div>
   </div>
+
 
   <div class="row container-center">
     <div class="col-sm-6 col-md-4">
@@ -90,11 +177,13 @@ Nombre la pagina
       <div class="card text-bg-info mb-3 " style="max-width: 18rem;">
         <div class="card-header">Calcula</div>
         <div class="card-body">
-          <h5 class="card-title">Con el siguiente boton calcularas tu TMB, Get y IMC</h5>
-          <p class="card-text"><div class="row">
-        <div class="col-3"></div>
-        <button type="submit" class="btn btn-success col-12">Calcula</button>
-      </div></p>
+          <h5 class="card-title">Con el siguiente boton calcularas tu TMB, GCT y IMC</h5>
+          <p class="card-text">
+          <div class="row">
+            <div class="col-3"></div>
+            <button type="submit" class="btn btn-success col-12">Calcula</button>
+          </div>
+          </p>
         </div>
       </div>
     </div>
@@ -107,8 +196,8 @@ Nombre la pagina
               value="{{ request.form.get('altura','')}}"></p>
         </div>
       </div>
-      </div>
-      
     </div>
-    
-    {% endblock contenido %}
+
+  </div>
+
+  {% endblock contenido %}

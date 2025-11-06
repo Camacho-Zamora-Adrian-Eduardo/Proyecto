@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Crea tu cuenta
+{% endblock titulo %}
+
+{% block contenido %}
+
+<main class="container bg-info">
+    <h2 class="text-center">Crea una cuenta</h2>
+    <p class="text-center">Es fácil y rápido</p>
+
+    
+    <form method="POST" action="{{ url_for('registro') }}"  class="row text-center">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger ' if category == 'error' else 'danger' }} alert-dismissible fade show"
+                        role="alert">
+                    </div>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close" ></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="col-3"></div>
+        <div class="mb-3 col-6">
+            <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" placeholder="Nombre completo" required
+            value = "{{ request.form.get('nombreCompleto','')}}">
+        </div>
+
+        
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label for="fecha">Fecha de nacimiento</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required 
+            value = "{{ request.form.get('fecha','')}}">
+        </div>
+        
+
+        
+        <div class="container-center">
+            <div class="row">
+            <div class="col-3"></div>
+        <div class="mb-3 col-6">
+            <label for="correo">Correo electronico</label>
+            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo electrónico" required
+            value = "{{ request.form.get('correo','')}}">
+        </div>
+        </div>
+        </div>
+        
+        <div class="col-3"></div>
+        <div class="mb-3 col-6">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Nueva contraseña" required 
+            value = "{{ request.form.get('contraseña','')}}">
+        </div>
+
+
+        <div class="row">
+            <div class="col-3"></div>
+            <p class="col-6">Al hacer clic en "Crear cuenta", aceptas nuestras <a href="#">Condiciones</a>, la
+                <a href="#">Política de privacidad</a> y la <a href="#">Política de cookies.</a> Es posible que te enviemos notificaciones por SMS, que puedes desactivar cuando quieras.
+            </p>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-3"></div>
+            <button type="submit" class="btn btn-success col-6">Crear cuenta</button>
+        </div>
+    </form>
+
+    >
+    <p class="text-center">
+        <a href="http://127.0.0.1:5000/">¿Ya tienes una cuenta?</a>
+    </p>
+</main>
+
+{% endblock contenido %}
