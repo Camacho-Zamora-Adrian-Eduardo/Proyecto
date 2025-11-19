@@ -45,6 +45,12 @@ def analisis():
 def calculadora():
     return render_template("calculadora.html")
 
+@app.route("/calcular")
+def calcular():
+    error=None
+    
+    return render_template("calculadora.html")
+
 @app.route("/registro")
 def registro():
     return render_template("registro.html")
@@ -64,6 +70,10 @@ def registrame():
     else:
         flash(f"Tu cuenta se a creado {nombreCompleto}")
         return render_template("inicio.html")
+    
+@app.route("/interfaz")
+def interfaz():
+    return render_template("interfazinicio.html")
 
 
 
