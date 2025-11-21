@@ -8,7 +8,7 @@ Nombre la pagina
 {% block contenido %}
     
 
-<form action="/calcularTMB" method="POST">    
+<form action="/calcularPCI" method="POST">    
 <style>
     body {
         background-color: #f5f5f5;
@@ -40,32 +40,24 @@ Nombre la pagina
     </style>
 <body>
 
+ 
 <div class="row">
     <div class="col-12 p-3" style="background-color: #a7d39c">
-        <h1 class="text-center">CALCULADORA DE TMB</h1>
+        <h1 class="text-center">CALCULADORA DE PESO CORPORAL IDEAL</h1>
     </div>
 </div>
 
-{% if tmb %}
+{% if pci %}
 <div class="container">
     <div id="resultado" class="resultado text-center">
-        <h2>Resultados de tu Tasa Metabólica Basal</h2>
-        <p class="text-center">Tu TMB es: {{ tmb | round(2) }} </p>
+        <h2>Resultados de tu Peso Corporal Ideal</h2>
+        <p class="text-center">Tu PCI es: {{ pci | round(2) }} </p>
     </div>
 {% endif %}
 
     <div class="row justify-content-center gy-4">
         
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #f6f87f; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Edad</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu edad</h5>
-            <input id="edad" type="number" class="form-control mt-3" name="edad" placeholder="Ejemplo: 20" required
-            value = "{{ request.form.get('edad','')}}">
-            </div>
-        </div>
-        </div>
+        
 
         <div class="col-sm-6 col-md-4">
         <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
@@ -84,16 +76,9 @@ Nombre la pagina
         </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Peso</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
-            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
-            value = "{{ request.form.get('peso','')}}">
-            </div>
-        </div>
-        </div>
+        
+
+        
 
         <div class="col-sm-6 col-md-4">
         <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
@@ -109,7 +94,7 @@ Nombre la pagina
 
 
     <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" >Calcular TMB</button>
+        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" >Calcular PCI</button>
     </div>
 </div>
 </form>

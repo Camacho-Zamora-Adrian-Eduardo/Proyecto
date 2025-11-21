@@ -8,7 +8,7 @@ Nombre la pagina
 {% block contenido %}
     
 
-<form>    
+<form action="/macroscalculados" method="POST">    
 <style>
     body {
         background-color: #f5f5f5;
@@ -38,23 +38,28 @@ Nombre la pagina
         font-weight: 500;
     }
     </style>
-</head>
 <body>
 
-<!-- ENCABEZADO --> 
+
 <div class="row">
     <div class="col-12 p-3" style="background-color: #a7d39c">
         <h1 class="text-center">CALCULADORA DE MACRONUTRIENTES</h1>
     </div>
 </div>
 
-<!-- Contenedor grande de resultados -->
-<div class="container">
-    <div id="resultado" class="resultado text-center">
-        Aquí se mostrarán los resultados (gráficos o tablas)
-    </div>
 
-    <!-- Sección de tarjetas -->
+{% if tdee %}
+    <div class="container">
+    <div id="resultado" class="resultado text-center">
+           <h2>Resultados de tus macronutrientes</h2>
+    <p><strong>TDEE:</strong> {{ tdee | round(2) }} calorías</p>
+    <p><strong>Proteínas:</strong> {{ proteinas | round(2) }} g</p>
+    <p><strong>Carbohidratos:</strong> {{ carbohidratos | round(2) }} g</p>
+    <p><strong>Grasas:</strong> {{ grasas | round(2) }} g</p>
+    </div>
+{% endif %}
+
+
     <div class="row justify-content-center gy-4">
         
         <div class="col-sm-6 col-md-4">
@@ -62,7 +67,7 @@ Nombre la pagina
             <div class="card-header text-center fw-bold">Edad</div>
             <div class="card-body">
             <h5 class="card-title text-center">Ingresa tu edad</h5>
-            <input id="edad" type="number" class="form-control mt-3" placeholder="Ejemplo: 20" required
+            <input id="edad" type="number" name="edad" class="form-control mt-3" placeholder="Ejemplo: 20" required
             value = "{{ request.form.get('edad','')}}">
             </div>
         </div>
@@ -74,13 +79,11 @@ Nombre la pagina
             <div class="card-body">
             <h5 class="card-title text-center">Selecciona tu género</h5>
             <div class="form-check mt-3">
-                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required
-                value = "{{ request.form.get('hombre','')}}">
+                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
                 <label class="form-check-label">Hombre</label>
             </div>
             <div class="form-check">
-                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required
-                value = "{{ request.form.get('mujer','')}}">
+                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
                 <label class="form-check-label">Mujer</label>
             </div>
             </div>
@@ -92,7 +95,7 @@ Nombre la pagina
             <div class="card-header text-center fw-bold">Actividad Física</div>
             <div class="card-body">
             <h5 class="card-title text-center">¿Qué tan activo eres?</h5>
-            <select id="actividad" class="form-select mt-3" required>
+            <select id="actividad" class="form-select mt-3" name="actividad" required>
                 <option value="">Seleccione su nivel</option>
                 <option value="sedentario">Sedentario (no hago ejercicio)</option>
                 <option value="ligero">Actividad ligera (1-3 dias/semana)</option>
@@ -108,7 +111,7 @@ Nombre la pagina
             <div class="card-header text-center fw-bold">Peso</div>
             <div class="card-body">
             <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
-            <input id="peso" type="number" class="form-control mt-3" placeholder="Ejemplo: 70" required
+            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
             value = "{{ request.form.get('peso','')}}">
             </div>
         </div>
@@ -119,10 +122,10 @@ Nombre la pagina
                 <div class="card-header text-center fw-bold">Objetivo</div>
                 <div class="card-body">
                 <h5 class="card-title text-center">¿Cual es tu objetivo?</h5>
-                <select id="actividad" class="form-select mt-3" required>
+                <select id="objetivo" class="form-select mt-3" name="objetivo" required>
                     <option value="">Seleccione su objetivo</option>
                     <option value="ganar">Subir de peso</option>
-                    <option value="">Mantener mi peso</option>
+                    <option value="mantener">Mantener mi peso</option>
                     <option value="perder">Bajar de peso</option>
                 </select>
                 </div>
@@ -134,16 +137,26 @@ Nombre la pagina
             <div class="card-header text-center fw-bold">Altura</div>
             <div class="card-body">
             <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
-            <input id="altura" type="number" class="form-control mt-3" placeholder="Ejemplo: 170" required
+            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
             value = "{{ request.form.get('altura','')}}">
             </div>
         </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color:#e3ff89; border: 2px solid black">
+                <div class="card-header text-center fw-bold">Calorías de Ajuste</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Ingresa cuántas calorías deseas subir/bajar</h5>
+                    <input id="calorias" type="number" class="form-control mt-3" name="calorias" placeholder="Ejemplo: 300" required
+                    value = "{{ request.form.get('calorias','')}}">
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Botón de Calcular -->
     <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" onclick="calcular()">Calcular TMB, GET e IMC</button>
+        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular Macronutrientes</button>
     </div>
 </div>
 </form>
