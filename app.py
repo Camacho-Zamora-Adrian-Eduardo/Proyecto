@@ -259,6 +259,9 @@ def registrame():
     flash(f"Tu cuenta ha sido creada, {nombre}")
     return redirect(url_for("index"))
 
+@app.route("/recetas")
+def recetas():
+    return render_template("recetassaludables.html")
 
 
 if __name__ == "__main__":

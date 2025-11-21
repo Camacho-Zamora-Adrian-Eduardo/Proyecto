@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Nombre la pagina
+Calculadora de Macronutrientes
 {% endblock titulo %}
 
 
@@ -51,7 +51,7 @@ Nombre la pagina
 {% if tdee %}
     <div class="container">
     <div id="resultado" class="resultado text-center">
-           <h2>Resultados de tus macronutrientes</h2>
+            <h2>Resultados de tus macronutrientes</h2>
     <p><strong>TDEE:</strong> {{ tdee | round(2) }} calorías</p>
     <p><strong>Proteínas:</strong> {{ proteinas | round(2) }} g</p>
     <p><strong>Carbohidratos:</strong> {{ carbohidratos | round(2) }} g</p>

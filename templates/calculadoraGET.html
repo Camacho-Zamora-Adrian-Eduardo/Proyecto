@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Nombre la pagina
+Calculadora de Gasto Energetico Diario
 {% endblock titulo %}
 
 
@@ -40,11 +40,10 @@ Nombre la pagina
     </style>
 <body>
 
- 
 
     <div class="row">
     <div class="col-12 p-3" style="background-color: #a7d39c">
-        <h1 class="text-center">CALCULADORA DE GET</h1>
+        <h1 class="text-center">CALCULADORA DE GASTO ENERGETICO DIARIO</h1>
     </div>
 </div>
 
@@ -54,7 +53,7 @@ Nombre la pagina
         <h2>Resultados de tu Gasto Energetico Diario</h2>
         <p class="text-center">Tu GET es: {{ get | round(2) }} calorías</p>
     </div>
- {% endif %}
+{% endif %}
 
     <div class="row justify-content-center gy-4">
         
