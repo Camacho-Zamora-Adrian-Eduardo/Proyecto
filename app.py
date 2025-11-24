@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+import requests
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'contraseña_muy_segura123'
@@ -6,6 +7,34 @@ app.config['SECRET_KEY'] = 'contraseña_muy_segura123'
 
 USUARIOS_REGISTRADOS = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
 
+
+TRADUCCIONES = {
+    "Energy": "Energía",
+    "Protein": "Proteína",
+    "Total lipid (fat)": "Grasa total",
+    "Carbohydrate, by difference": "Carbohidratos",
+    "Fiber, total dietary": "Fibra",
+    "Sugars, total": "Azúcares",
+    "Calcium, Ca": "Calcio",
+    "Iron, Fe": "Hierro",
+    "Sodium, Na": "Sodio",
+    "Vitamin C, total ascorbic acid": "Vitamina C",
+    "Vitamin A, IU": "Vitamina A",
+    "Potassium, K": "Potasio",
+    "Cholesterol": "Colesterol",
+    "Fatty acids, total saturated": "Grasas saturadas",
+    "Fatty acids, total monounsaturated": "Grasas monoinsaturadas",
+    "Fatty acid, total polyunsaturated": "Grasas poliinsaturadas",
+    "Fatty acids, total polyunsaturated": "Grasas poliinsaturadas",
+
+    "Branded Food": "Alimento de marca",
+    "Survey (FNDDS)": "Encuesta alimentaria",
+    "Foundation": "Base de datos principal",
+
+    "SR Legacy": "Base de datos histórica",}
+
+api_key = "b48he0KjRd6oDnYooKxLr1OCO9pCoJPuX1bqmvDu"
+API_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
 @app.route("/")
 def index():
@@ -47,6 +76,54 @@ def interfaz():
 @app.route("/analisisdecomida")
 def analisis():
     return render_template("analisis.html")
+
+@app.route('/search', methods=['POST'])
+def search_alimento():
+    alimento_name = request.form.get('alimento_name', '').strip().lower()
+
+    if not alimento_name:
+        flash("Por favor, ingrese un alimento", "danger")
+        return redirect(url_for('analisis'))
+
+    headers = {"X-Api-Key": api_key}
+    params = {"query": alimento_name}
+
+    try:
+        response = requests.get(API_URL, headers=headers, params=params)
+        response.raise_for_status()
+        data = response.json()
+
+        if 'foods' not in data or len(data['foods']) == 0:
+            flash(f'Alimento "{alimento_name}" no encontrado', 'danger')
+            return redirect(url_for('analisis'))
+
+        alimento_data = data['foods'][0]
+
+        alimento_info = {
+            "name": alimento_data["description"].title(),
+            "fdcId": alimento_data["fdcId"],
+            "foodCategory": TRADUCCIONES.get(
+                alimento_data.get("foodCategory", "Desconocida"),
+                alimento_data.get("foodCategory", "Desconocida")
+            ),
+            "dataSource": TRADUCCIONES.get(
+                alimento_data.get("dataSource", "Desconocido"),
+                alimento_data.get("dataSource", "Desconocido")
+            ),
+            "brandOwner": alimento_data.get("brandOwner", "Desconocido"),
+
+            "foodNutrients": [
+                {"name": TRADUCCIONES.get(nutrient["nutrientName"],
+                                        nutrient["nutrientName"]),
+                    "value": nutrient["value"],
+                    "unit": nutrient["unitName"]}
+                for nutrient in alimento_data.get("foodNutrients", [])]}
+
+        return render_template("alimento.html", alimento=alimento_info)
+
+    except requests.exceptions.RequestException as e:
+        flash(f"Error al hacer la solicitud: {e}", "danger")
+        return redirect(url_for('analisis'))
 
 
 @app.route("/calculadoraGET")
