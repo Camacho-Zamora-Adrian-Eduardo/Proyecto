@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
+from googletrans import Translator
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'contraseña_muy_segura123'
+app.config['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
 
 
 USUARIOS_REGISTRADOS = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
@@ -35,6 +37,8 @@ TRADUCCIONES = {
 
 api_key = "b48he0KjRd6oDnYooKxLr1OCO9pCoJPuX1bqmvDu"
 API_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
+
+
 
 @app.route("/")
 def index():
