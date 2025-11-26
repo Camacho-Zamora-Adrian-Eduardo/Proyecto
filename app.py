@@ -1,39 +1,43 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
 
 
-USUARIOS_REGISTRADOS = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
+Usuarios_registrados = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
 
-
-TRADUCCIONES = {
-    "Energy": "Energía",
+Nutrientes_importantes = {
+    "Energy",
+    "Protein",
+    "Total lipid (fat)",
+    "Carbohydrate, by difference",
+    "Fiber, total dietary",
+    "Sugars, total including NLEA",
+    "Calcium, Ca",
+    "Iron, Fe",
+    "Sodium, Na",
+    "Potassium, K",
+    "Vitamin C, total ascorbic acid",
+    "Vitamin A, RAE"
+}
+Traducciones = {
+    "Energy": "Energía (kcal)",
     "Protein": "Proteína",
     "Total lipid (fat)": "Grasa total",
     "Carbohydrate, by difference": "Carbohidratos",
-    "Fiber, total dietary": "Fibra",
-    "Sugars, total": "Azúcares",
+    "Fiber, total dietary": "Fibra dietética",
+    "Sugars, total including NLEA": "Azúcares totales",
     "Calcium, Ca": "Calcio",
     "Iron, Fe": "Hierro",
     "Sodium, Na": "Sodio",
-    "Vitamin C, total ascorbic acid": "Vitamina C",
-    "Vitamin A, IU": "Vitamina A",
     "Potassium, K": "Potasio",
-    "Cholesterol": "Colesterol",
-    "Fatty acids, total saturated": "Grasas saturadas",
-    "Fatty acids, total monounsaturated": "Grasas monoinsaturadas",
-    "Fatty acid, total polyunsaturated": "Grasas poliinsaturadas",
-    "Fatty acids, total polyunsaturated": "Grasas poliinsaturadas",
+    "Vitamin C, total ascorbic acid": "Vitamina C",
+    "Vitamin A, RAE": "Vitamina A",
 
-    "Branded Food": "Alimento de marca",
-    "Survey (FNDDS)": "Encuesta alimentaria",
-    "Foundation": "Base de datos principal",
-
-    "SR Legacy": "Base de datos histórica",}
+}
 
 api_key = "b48he0KjRd6oDnYooKxLr1OCO9pCoJPuX1bqmvDu"
 API_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
@@ -55,8 +59,8 @@ def validasesion():
         flash('Por favor ingresa email y contraseña', 'error')
         return render_template('iniciosesion.html')
 
-    if email in USUARIOS_REGISTRADOS:
-        usuario = USUARIOS_REGISTRADOS[email]
+    if email in Usuarios_registrados:
+        usuario = Usuarios_registrados[email]
 
         if usuario['password'] == password:
             session['usuario_email'] = email
@@ -76,10 +80,123 @@ def validasesion():
 def interfaz():
     return render_template("interfazinicio.html")
 
+@app.route("/recomendaciones", methods=["POST"])
+def recomendaciones():
+
+    sueno = int(request.form.get("sueno", 0))
+    comidas = int(request.form.get("comidas", 0))
+    deporte = request.form.get("deporte", "")
+    actividad = request.form.get("actividad", "")
+
+    cereales = int(request.form.get("cereales", 0))
+    proteinas = int(request.form.get("proteinas", 0))
+    grasas = int(request.form.get("grasas", 0))
+    frutas = int(request.form.get("frutas", 0))
+    verduras = int(request.form.get("vegetales", 0))
+    leche = int(request.form.get("leche", 0))
+    azucar = int(request.form.get("azucar", 0))
+    leguminosas = int(request.form.get("leguminosas", 0))
+    agua = float(request.form.get("agua", 0))
+
+    recomendaciones = []
+
+
+    if sueno < 7:
+        recomendaciones.append("*Duerme más de 7 horas al día para mejorar tu rendimiento.*")
+    else:
+        recomendaciones.append(" Buen trabajo con tus horas de sueño.")
+
+    if comidas < 3:
+        recomendaciones.append("*Haz al menos 3 comidas al día para mantener tu energía estable.*")
+    else:
+        recomendaciones.append(" Tu frecuencia de comidas es adecuada.")
+
+    if actividad == "baja":
+        recomendaciones.append(" *Aumenta tu actividad física al menos 30 min diarios.*")
+    elif actividad == "media":
+        recomendaciones.append(" Buen nivel de actividad física, sigue así.")
+    else:
+        recomendaciones.append(" Excelente nivel de actividad física.")
+
+    
+    rec = {
+        "cereales": 6,
+        "proteinas": 5,
+        "grasas": 3,
+        "frutas": 2,
+        "verduras": 3,
+        "leche": 1,
+        "azucar": 50,
+        "leguminosas": 1,
+        "agua": 8
+    }
+
+    def revisar_consumo(nombre, valor_actual, valor_recomendado, bueno, bajo, alto):
+        if valor_actual < valor_recomendado:
+            recomendaciones.append(bajo)
+        elif valor_actual > valor_recomendado:
+            recomendaciones.append(alto)
+        else:
+            recomendaciones.append(bueno)
+
+    revisar_consumo("cereales", cereales, rec["cereales"],
+        " Buen consumo de cereales.",
+        " *Te faltan cereales integrales en tu alimentación.*",
+        " *Estás consumiendo demasiados cereales, reduce un poco.*"
+    )
+
+    revisar_consumo("proteinas", proteinas, rec["proteinas"],
+        " Buen consumo de proteínas.",
+        " *Incluye más proteínas magras como pollo, pescado, huevo.*",
+        " *Reduce tu exceso de proteínas.*"
+    )
+
+    revisar_consumo("frutas", frutas, rec["frutas"],
+        " Buen consumo de frutas.",
+        " *Consume más frutas frescas.*",
+        " *Demasiada fruta puede aumentar el azúcar natural.*"
+    )
+
+    revisar_consumo("verduras", verduras, rec["verduras"],
+        " Buen consumo de verduras.",
+        " *Necesitas más verduras.*",
+        " *Estás consumiendo demasiadas verduras (raro, pero posible).*"
+    )
+
+    revisar_consumo("leche", leche, rec["leche"],
+        " Buen consumo de lácteos.",
+        " *Incluye una porción de leche o derivados.*",
+        " *Estás consumiendo demasiados lácteos.*"
+    )
+
+    revisar_consumo("azúcar", azucar, rec["azucar"],
+        " Buen control de azúcar.",
+        " Tu consumo de azúcar es bajo.",
+        " *Reduce urgentemente tus niveles de azúcar.*"
+    )
+
+    revisar_consumo("leguminosas", leguminosas, rec["leguminosas"],
+        " Buen consumo de leguminosas.",
+        " *Incluye más frijoles, lentejas o garbanzos en tu dieta.*",
+        " *Consumo excesivo de leguminosas.*"
+    )
+
+    revisar_consumo("agua", agua, rec["agua"],
+        " Excelente hidratación.",
+        " *Te falta beber más agua, mínimo 2 litros diarios.*",
+        " *Estás tomando demasiada agua.*"
+    )
+
+    return render_template("interfazinicio.html", recomendaciones=recomendaciones)
+
+
 
 @app.route("/analisisdecomida")
 def analisis():
     return render_template("analisis.html")
+
+def traducir(texto):
+    return GoogleTranslator(source='es', target='en').translate(texto)
 
 @app.route('/search', methods=['POST'])
 def search_alimento():
@@ -89,8 +206,10 @@ def search_alimento():
         flash("Por favor, ingrese un alimento", "danger")
         return redirect(url_for('analisis'))
 
+    alimento_traducido = traducir(alimento_name)
+
     headers = {"X-Api-Key": api_key}
-    params = {"query": alimento_name}
+    params = {"query": alimento_traducido}
 
     try:
         response = requests.get(API_URL, headers=headers, params=params)
@@ -98,36 +217,44 @@ def search_alimento():
         data = response.json()
 
         if 'foods' not in data or len(data['foods']) == 0:
-            flash(f'Alimento "{alimento_name}" no encontrado', 'danger')
+            flash(f'Alimento \"{alimento_name}\" no encontrado', 'danger')
             return redirect(url_for('analisis'))
 
         alimento_data = data['foods'][0]
 
         alimento_info = {
-            "name": alimento_data["description"].title(),
-            "fdcId": alimento_data["fdcId"],
-            "foodCategory": TRADUCCIONES.get(
+            "name": alimento_data.get("description", "").title(),
+            "fdcId": alimento_data.get("fdcId"),
+            "foodCategory": Traducciones.get(
                 alimento_data.get("foodCategory", "Desconocida"),
                 alimento_data.get("foodCategory", "Desconocida")
             ),
-            "dataSource": TRADUCCIONES.get(
+            "dataSource": Traducciones.get(
                 alimento_data.get("dataSource", "Desconocido"),
                 alimento_data.get("dataSource", "Desconocido")
             ),
             "brandOwner": alimento_data.get("brandOwner", "Desconocido"),
 
             "foodNutrients": [
-                {"name": TRADUCCIONES.get(nutrient["nutrientName"],
-                                        nutrient["nutrientName"]),
-                    "value": nutrient["value"],
-                    "unit": nutrient["unitName"]}
-                for nutrient in alimento_data.get("foodNutrients", [])]}
+                {
+                    "name": Traducciones.get(
+                        nutrient.get("nutrientName", "Desconocido"),
+                        nutrient.get("nutrientName", "Desconocido")
+                    ),
+                    "value": nutrient.get("value", 0),
+                    "unit": nutrient.get("unitName", "")
+                }
+                for nutrient in alimento_data.get("foodNutrients", [])
+                if nutrient.get("nutrientName") in Nutrientes_importantes
+            ]
+        }
 
         return render_template("alimento.html", alimento=alimento_info)
 
     except requests.exceptions.RequestException as e:
         flash(f"Error al hacer la solicitud: {e}", "danger")
         return redirect(url_for('analisis'))
+
 
 
 @app.route("/calculadoraGET")

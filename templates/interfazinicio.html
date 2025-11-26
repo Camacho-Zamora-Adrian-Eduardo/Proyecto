@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Nombre la pagina
+Panel Nutricional
 {% endblock titulo %}
 
-
 {% block contenido %}
-  
 
-  
-    <style>
+<style>
     body {
         background-color: #f5f5f5;
     }
@@ -20,203 +17,197 @@ Nombre la pagina
         margin-top: 40px;
         font-weight: 500;
     }
-    </style>
-</head>
-<body>
 
-  <!-- ENCABEZADO -->
-        <div class="row">
-            <div class="col-12 p-1"  style="background-color: #e0ffbd">
-                <h1 class="text-center">PANEL DE CONTROL NUTRICIONAL</h1>
+</style>
+
+<form action="/recomendaciones" method="POST">
+<div class="row">
+    <div class="col-12 p-1" style="background-color: #e0ffbd">
+        <h1 class="text-center fw-bold">PANEL DE CONTROL NUTRICIONAL</h1>
+    </div>
+</div>
+
+{% if recomendaciones %}
+<div class="container my-5">
+    <div class="card p-4 shadow">
+        <h2 class="text-center mb-4">Recomendaciones Personalizadas</h2>
+
+        <ul class="list-group list-group-flush">
+            {% for r in recomendaciones %}
+            <li class="list-group-item fs-5">{{ r }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+<div class="container py-4">
+    <div class="row justify-content-center gy-4">
+
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #8b61ff, #9fe5fa);">
+                <div class="card-header text-center fw-bold">Sueño</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">¿Cuántas horas duermes al día?</h5>
+                    <input name="sueno" id="sueno" type="number" class="form-control mt-3" placeholder="Ejemplo: 8" required>
+                </div>
             </div>
         </div>
 
-  <!-- SECCIÓN DE OBJETIVOS (4 TARJETAS) -->
- <div class="container py-4">
-  <div class="row justify-content-center gy-4">
 
-<!-- MINI TARJETA: SUEÑO -->
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card text h-100 shadow-sm" style="background: linear-gradient(90deg, #8b61ff, #9fe5fa); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Sueño</div>
-        <div class="card-body">
-          <h5 class="card-title text-center">¿Cuántas horas duermes al dia?</h5>
-          <input id="altura" type="number" class="form-control mt-3" placeholder="Ejemplo: 170" required>
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card h-100 shadow-sm" style="background: linear-gradient(45deg, #96ff4f, #f2ff3f);">
+                <div class="card-header text-center fw-bold">Comidas</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">¿Cuántas comidas haces al día?</h5>
+                    <input name="comidas" id="comidas" type="number" class="form-control mt-3" placeholder="Ejemplo: 3" required>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-<!-- MINI TARJETA: COMIDAS -->
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card text h-100 shadow-sm" style="background: linear-gradient(45deg, #96ff4f, #f2ff3f); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Comidas</div>
-        <div class="card-body">
-          <h5 class="card-title text-center">¿Cuántas comidas das al dia?</h5>
-          <input id="edad" type="number" class="form-control mt-3" placeholder="Ejemplo: 20" required>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #f2ff3f, #ffb62f, #ff5f5f);">
+                <div class="card-header text-center fw-bold">Deporte</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">¿Qué deporte practicas?</h5>
+                    <input name="deporte" id="deporte" type="text" class="form-control mt-3" placeholder="Ejemplo: caminata" required>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-<!-- MINI TARJETA: DEPORTE -->
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card text h-100 shadow-sm" style="background: linear-gradient(90deg, #f2ff3f, #ffb62f, #ff5f5f); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Deporte</div>
-        <div class="card-body">
-          <h5 class="card-title text-center">Ingresa el deporte que practicas</h5>
-          <input id="peso" type="number" class="form-control mt-3" placeholder="Ejemplo: 65" required>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ff7eb3, #c039ff);">
+                <div class="card-header text-center fw-bold">Actividad Física</div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Selecciona tu nivel de</h5>
+                    <select name="actividad" id="actividad" class="form-control mt-3" required>
+                        <option value="">Selecciona tu nivel de actividad fisica</option>
+                        <option value="baja">Baja 0-1 dias</option>
+                        <option value="media">Media 2-4 dias</option>
+                        <option value="alta">Alta 5 dias o mas</option>
+                    </select>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-<!-- MINI TARJETA: ACTIVIDAD -->
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card text h-100 shadow-sm" style="background: linear-gradient(90deg, #ff7eb3, #c039ff); border: 2px solid black
-      
-      ">
-        <div class="card-header text-center fw-bold">Actividad</div>
-        <div class="card-body">
-          <h5 class="card-title text-center">Selecciona tu nivel de actividad física</h5>
-          <select id="actividad" class="form-control mt-3" required>
-            <option value="">Selecciona una opción</option>
-            <option value="baja">Baja</option>
-            <option value="media">Media</option>
-            <option value="alta">Alta</option>
-          </select>
-        </div>
-      </div>
     </div>
-
-  </div>
 </div>
 
-  <!-- SECCIÓN DE ALIMENTOS (9 TARJETAS) -->
-  <div class="container py-2">
+
+<div class="container py-2">
     <div class="row justify-content-center gy-4">
-      
-<!-- CEREALES -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #daab53; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Cereales</div>
-          <img src="../static/img/CEREALES.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tus cereales</h5>
-            <input id="edad" type="number" class="form-control mt-3" placeholder="Ejemplo: 20" required>
-          </div>
-        </div>
-      </div>
 
-<!-- PROTEINAS -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #ff8878; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Proteinas</div>
-          <img src="../static/img/PROTEINAS.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tus proteinas</h5>
-            <input id="altura" type="number" class="form-control mt-3" placeholder="Ejemplo: 170" required>
-          </div>
-        </div>
-      </div>
 
-<!-- GRASAS -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #ffe345; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Grasas</div>
-          <img src="../static/img/GRASAS.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tus grasas</h5>
-            <input id="peso" type="number" class="form-control mt-3" placeholder="Ejemplo: 65" required>
-          </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #daab53;">
+                <div class="card-header text-center fw-bold">Cereales</div>
+                <img src="{{ url_for('static', filename='img/CEREALES.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="cereales" id="cereales" type="number" class="form-control mt-3" placeholder="Ejemplo: 6 porciones(1 tortilla = 1 porcion)" required>
+                </div>
+            </div>
         </div>
-      </div>
 
-<!-- FRUTAS -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #ff83bd; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Fruta</div>
-          <img src="../static/img/FRUTAS.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu fruta</h5>
-            <select id="actividad" class="form-control mt-3" required>
-              <option value="">Selecciona una opción</option>
-              <option value="baja">Baja</option>
-              <option value="media">Media</option>
-              <option value="alta">Alta</option>
-            </select>
-          </div>
-        </div>
-      </div>
 
-<!-- VERDURAS -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #7eff43; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Vegetales</div>
-          <img src="../static/img/VERDURAS.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Selecciona tus vegetales</h5>
-            <select id="genero" class="form-control mt-3" required>
-              <option value="">Selecciona</option>
-              <option value="hombre">Hombre</option>
-              <option value="mujer">Mujer</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #ff8878;">
+                <div class="card-header text-center fw-bold">Proteínas</div>
+                <img src="{{ url_for('static', filename='img/PROTEINAS.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="proteinas" id="proteinas" type="number" class="form-control mt-3" placeholder="Ejemplo: 5 porciones (1 huevo = 1 porcion)" required>
+                </div>
+            </div>
         </div>
-      </div>
 
-<!-- LECHE -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #cecece; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Leche</div>
-          <img src="../static/img/LECHE.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">¿Cuánta leche consumes al dia?</h5>
-            <select id="objetivo" class="form-control mt-3" required>
-              <option value="">Selecciona</option>
-              <option value="bajar">Bajar de peso</option>
-              <option value="mantener">Mantener peso</option>
-              <option value="subir">Subir masa muscular</option>
-            </select>
-          </div>
-        </div>
-      </div>
 
-<!-- AZUCAR -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #4ffff6; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Azucares</div>
-          <img src="../static/img/AZUCAR.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu nivel de azucar</h5>
-            <input id="comidas" type="number" class="form-control mt-3" placeholder="Ejemplo: 3" required>
-          </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #ffe345;">
+                <div class="card-header text-center fw-bold">Grasas</div>
+                <img src="{{ url_for('static', filename='img/GRASAS.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="grasas" id="grasas" type="number" class="form-control mt-3" placeholder="Ejemplo: 3 porciones 1/8 aguacate = 1 porcion" required>
+                </div>
+            </div>
         </div>
-      </div>
 
-<!-- LEGUMINOSAS -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #ce79ff; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Leguminosas</div>
-          <img src="../static/img/LEGUMINOSAS.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">¿Cuántas leguminosas consumes?</h5>
-            <input id="agua" type="number" class="form-control mt-3" placeholder="Ejemplo: 2" required>
-          </div>
-        </div>
-      </div>
 
-<!-- AGUA -->
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="card h-100 shadow-sm" style="background-color: #7e91ff; border: 2px solid black">
-          <div class="card-header text-center fw-bold">Agua</div>
-          <img src="../static/img/AGUA.png" class="img-fluid">
-          <div class="card-body">
-            <h5 class="card-title text-center">¿Cuánta agua tomas al día? (L)</h5>
-            <input id="sueno" type="number" class="form-control mt-3" placeholder="Ejemplo: 8" required>
-          </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #ff83bd;">
+                <div class="card-header text-center fw-bold">Frutas</div>
+                <img src="{{ url_for('static', filename='img/FRUTAS.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="frutas" id="frutas" type="number" class="form-control mt-3" placeholder="Ejemplo: 2 porciones (1 manzana = 1 porcion)" required>
+                </div>
+            </div>
         </div>
-      </div>
+
+
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #7eff43;">
+                <div class="card-header text-center fw-bold">Verduras</div>
+                <img src="{{ url_for('static', filename='img/VERDURAS.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="vegetales" id="vegetales" type="number" class="form-control mt-3" placeholder="Ejemplo: 3 porciones (1/2 taza cocida = 1 porcion)" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #cecece;">
+                <div class="card-header text-center fw-bold">Leche</div>
+                <img src="{{ url_for('static', filename='img/LECHE.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="leche" id="leche" type="number" class="form-control mt-3" placeholder="Ejemplo: 1 taza" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #4ffff6;">
+                <div class="card-header text-center fw-bold">Azúcares</div>
+                <img src="{{ url_for('static', filename='img/AZUCAR.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="azucar" id="azucar" type="number" class="form-control mt-3" placeholder="Ejemplo: 10 gramos" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #ce79ff;">
+                <div class="card-header text-center fw-bold">Leguminosas</div>
+                <img src="{{ url_for('static', filename='img/LEGUMINOSAS.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="leguminosas" id="leguminosas" type="number" class="form-control mt-3" placeholder="Ejemplo: 1 porcion (1/2 taza cocida = 1 porcion)" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="card h-100 shadow-sm" style="background-color: #7e91ff;">
+                <div class="card-header text-center fw-bold">Agua</div>
+                <img src="{{ url_for('static', filename='img/AGUA.png') }}" class="img-fluid">
+                <div class="card-body">
+                    <input name="agua" id="agua" type="number" class="form-control mt-3" placeholder="Ejemplo: 8 Vasos" required>
+                </div>
+            </div>
+        </div>
 
     </div>
-  </div>
+</div>
 
-  {% endblock contenido %}
+<div class="text-center my-5">
+    <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Revisa y obten recomendaciones</button>
+</div>
+
+</form>
+
+
+
+{% endblock contenido %}
