@@ -87,7 +87,6 @@ def recomendaciones():
     comidas = int(request.form.get("comidas", 0))
     deporte = request.form.get("deporte", "")
     actividad = request.form.get("actividad", "")
-
     cereales = int(request.form.get("cereales", 0))
     proteinas = int(request.form.get("proteinas", 0))
     grasas = int(request.form.get("grasas", 0))
@@ -212,9 +211,9 @@ def search_alimento():
     params = {"query": alimento_traducido}
 
     try:
-        response = requests.get(API_URL, headers=headers, params=params)
-        response.raise_for_status()
-        data = response.json()
+        respuesta = requests.get(API_URL, headers=headers, params=params)
+        respuesta.raise_for_status()
+        data = respuesta.json()
 
         if 'foods' not in data or len(data['foods']) == 0:
             flash(f'Alimento \"{alimento_name}\" no encontrado', 'danger')
