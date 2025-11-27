@@ -4,7 +4,7 @@ from deep_translator import GoogleTranslator
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
+app.config ['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
 
 
 Usuarios_registrados = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
@@ -441,15 +441,9 @@ def calcular_TMB_route():
         return redirect(url_for("calculadoraTMB"))
 
 
-
-
-
-
-
-
-@app.route("/registro")
+@app.route("/creacuenta")
 def registro():
-    return render_template("registro.html")
+    return render_template("crearcuenta.html")
 
 
 @app.route('/registrame', methods=['POST'])
@@ -461,7 +455,7 @@ def registrame():
 
     if not nombre or not correo or not password:
         flash("Todos los campos son obligatorios", "error")
-        return render_template("registro.html")
+        return render_template("crearcuenta.html")
 
     flash(f"Tu cuenta ha sido creada, {nombre}")
     return redirect(url_for("index"))
