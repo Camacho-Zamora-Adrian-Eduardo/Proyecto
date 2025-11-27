@@ -76,9 +76,9 @@ def validasesion():
 
 
 
-@app.route("/interfaz")
-def interfaz():
-    return render_template("interfazinicio.html")
+@app.route("/panel")
+def panel():
+    return render_template("panelControl.html")
 
 @app.route("/recomendaciones", methods=["POST"])
 def recomendaciones():
@@ -186,7 +186,7 @@ def recomendaciones():
         " *Estás tomando demasiada agua.*"
     )
 
-    return render_template("interfazinicio.html", recomendaciones=recomendaciones)
+    return render_template("panelControl.html", recomendaciones=recomendaciones)
 
 
 
@@ -458,11 +458,15 @@ def registrame():
         return render_template("crearcuenta.html")
 
     flash(f"Tu cuenta ha sido creada, {nombre}")
-    return redirect(url_for("index"))
+    return redirect("interfazInicio.html")
 
 @app.route("/recetas")
 def recetas():
     return render_template("recetassaludables.html")
+
+@app.route("/educacion")
+def educacion():
+    return render_template("Educacion.html")
 
 
 if __name__ == "__main__":
