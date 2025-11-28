@@ -7,18 +7,28 @@ Calculadora de Tasa Metabolica Basal
 
 {% block contenido %}
     
-
 <form action="/calcularTMB" method="POST">    
 <style>
     body {
         background-color: #f5f5f5;
     }
+    .descripcion-panel {
+            background: #ffffff;
+            padding: 25px;
+            margin: 20px auto;
+            border-radius: 12px;
+            border-left: 6px solid #8cd26f;
+            max-width: 1100px;
+        }
+    .descripcion-panel h2 {
+            font-weight: 700;
+            color: #3d7b37;
+        }
     .resultado {
         height: auto;
         min-height: 250px;
         border: 2px dashed #298b02;
         border-radius: 12px;
-
         margin: 40px auto;
         display: flex;
         align-items: center;
@@ -42,8 +52,30 @@ Calculadora de Tasa Metabolica Basal
 
 <div class="row">
     <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center">CALCULADORA DE TASA METABOLICA BASAL</h1>
+        <h1 class="text-center fw-bold">CALCULADORA DE TASA METABOLICA BASAL</h1>
     </div>
+</div>
+
+<div class="descripcion-panel">
+    <h2>¿Para qué sirve la Calculadora de TMB?</h2>
+    <p>
+        La calculadora de TMB está diseñada para ayudarte a conocer cuántas calorías necesita tu cuerpo para funcionar 
+        correctamente aun cuando estás en reposo. La Tasa Metabólica Basal representa la energía mínima que requiere tu 
+        organismo para realizar funciones vitales como respirar, mantener la temperatura corporal, hacer circular la sangre 
+        y permitir el correcto funcionamiento de los órganos.
+        <br><br>
+        Este módulo te permite ingresar datos como tu edad, estatura, peso y sexo, para obtener un cálculo aproximado y 
+        personalizado. Con esta información, podrás comprender mejor tus necesidades energéticas y tener una base más clara 
+        para planificar tus objetivos de nutrición, ya sea mantener tu peso, aumentarlo o reducirlo de forma saludable.
+        <br><br>
+        Además, la calculadora te ayuda a identificar tu rango de peso ideal y te ofrece una interpretación según tu categoría 
+        actual, como peso bajo, normal, sobrepeso u obesidad. De esta manera, no solo conoces tu TMB, sino también el contexto 
+        de tu situación actual.
+        <br><br>
+        Este módulo es útil como una guía educativa que facilita la toma de decisiones informadas y responsables respecto a 
+        tu alimentación y tu estilo de vida. Su propósito es brindarte una herramienta práctica que puedas utilizar para conocer 
+        mejor tu cuerpo y desarrollar hábitos que contribuyan a tu bienestar.
+    </p>
 </div>
 
 {% if tmb %}

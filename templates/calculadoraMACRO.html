@@ -7,18 +7,28 @@ Calculadora de Macronutrientes
 
 {% block contenido %}
     
-
 <form action="/macroscalculados" method="POST">    
 <style>
     body {
         background-color: #f5f5f5;
     }
+    .descripcion-panel {
+            background: #ffffff;
+            padding: 25px;
+            margin: 20px auto;
+            border-radius: 12px;
+            border-left: 6px solid #8cd26f;
+            max-width: 1100px;
+        }
+    .descripcion-panel h2 {
+            font-weight: 700;
+            color: #3d7b37;
+        }
     .resultado {
         height: auto;
         min-height: 250px;
         border: 2px dashed #298b02;
         border-radius: 12px;
-
         margin: 40px auto;
         display: flex;
         align-items: center;
@@ -40,13 +50,29 @@ Calculadora de Macronutrientes
     </style>
 <body>
 
-
 <div class="row">
     <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center">CALCULADORA DE MACRONUTRIENTES</h1>
+        <h1 class="text-center fw-bold">CALCULADORA DE MACRONUTRIENTES</h1>
     </div>
 </div>
 
+<div class="descripcion-panel">
+    <h2>¿Para qué sirve la Calculadora de Macronutrientes?</h2>
+    <p>
+        La calculadora de macronutrientes está diseñada para ayudarte a conocer la cantidad aproximada de carbohidratos, proteínas 
+        y grasas que necesitas diariamente según tus características personales y objetivos. A partir de datos como tu edad, sexo, 
+        peso, estatura y nivel de actividad física, este módulo te ofrece una distribución recomendada que te permite entender cómo 
+        deben repartirse los nutrientes en tu alimentación para mantener un equilibrio adecuado.
+        <br><br>
+        Esta herramienta es especialmente útil si buscas mejorar tu salud, aumentar masa muscular, bajar de peso o simplemente 
+        organizar mejor tu dieta diaria. Al conocer cuántos gramos de cada macronutriente necesitas, puedes tomar decisiones más 
+        conscientes sobre tus comidas y asegurarte de que tu cuerpo reciba la energía y los nutrientes esenciales que requiere.
+        <br><br>
+        Además, la calculadora tiene un enfoque educativo, ya que te ayuda a comprender la importancia de cada macronutriente dentro 
+        de una dieta saludable. Su propósito es darte una guía clara y sencilla que puedas aplicar fácilmente en tu vida diaria, 
+        facilitando la construcción de hábitos nutricionales más equilibrados y adecuados para tu bienestar.
+    </p>
+</div>
 
 {% if tdee %}
     <div class="container">

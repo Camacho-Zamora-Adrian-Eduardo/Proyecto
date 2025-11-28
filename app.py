@@ -300,8 +300,6 @@ def calcular_GET():
         actividad=actividad
     )
 
-
-
 @app.route("/calculadoraIMC")
 def calculadoraIMC():
     return render_template("calculadoraIMC.html")
@@ -442,7 +440,7 @@ def calcular_TMB_route():
 
 
 @app.route("/creacuenta")
-def registro():
+def crearcuenta():
     return render_template("crearcuenta.html")
 
 
@@ -463,6 +461,10 @@ def registrame():
 @app.route("/recetas")
 def recetas():
     return render_template("recetassaludables.html")
+
+@app.route("/interfaz")
+def interfaz():
+    return render_template("interfazinicio.html")
 
 @app.route("/educacion")
 def educacion():

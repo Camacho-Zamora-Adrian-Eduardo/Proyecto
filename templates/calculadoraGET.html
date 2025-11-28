@@ -7,18 +7,28 @@ Calculadora de Gasto Energetico Diario
 
 {% block contenido %}
     
-
 <form action="/calcularGET" method="POST">    
 <style>
     body {
         background-color: #f5f5f5;
     }
+    .descripcion-panel {
+            background: #ffffff;
+            padding: 25px;
+            margin: 20px auto;
+            border-radius: 12px;
+            border-left: 6px solid #8cd26f;
+            max-width: 1100px;
+        }
+    .descripcion-panel h2 {
+            font-weight: 700;
+            color: #3d7b37;
+        }
     .resultado {
         height: auto;
         min-height: 250px;
         border: 2px dashed #298b02;
         border-radius: 12px;
-
         margin: 40px auto;
         display: flex;
         align-items: center;
@@ -40,11 +50,28 @@ Calculadora de Gasto Energetico Diario
     </style>
 <body>
 
-
     <div class="row">
     <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center">CALCULADORA DE GASTO ENERGETICO DIARIO</h1>
+        <h1 class="text-center fw-bold">CALCULADORA DE GASTO ENERGETICO DIARIO</h1>
     </div>
+</div>
+
+<div class="descripcion-panel">
+    <h2>¿Para qué sirve la Calculadora de GET?</h2>
+    <p>
+        La calculadora de GET te ayuda a conocer el Gasto Energético Total, que es la cantidad aproximada de calorías que tu cuerpo 
+        necesita al día para funcionar correctamente dependiendo de tu edad, peso, estatura, género y nivel de actividad física. 
+        Este valor es fundamental para comprender cuánta energía consumes y cuánta necesitas, lo que te permite tomar decisiones 
+        más conscientes sobre tu alimentación.
+        <br><br>
+        Con esta herramienta puedes saber si tu ingesta diaria de alimentos está por encima o por debajo de tus necesidades energéticas. 
+        Esto es especialmente útil si deseas mantener tu peso, bajarlo o aumentarlo, ya que el equilibrio entre lo que comes y lo que 
+        gastas influye directamente en tus resultados y en tu bienestar general.
+        <br><br>
+        El objetivo del módulo es brindarte una referencia clara y sencilla sobre tu situación actual, ayudándote a entender tu estilo 
+        de vida y cómo tus hábitos afectan tu gasto energético. De esta forma, tendrás una mejor guía para ajustar tus actividades 
+        diarias o tu alimentación de acuerdo con tus metas personales.
+    </p>
 </div>
 
 {% if get %}

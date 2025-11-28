@@ -7,12 +7,22 @@ Recetas saludables
 
 {% block contenido %}
   
-
-  
-    <style>
+  <style>
     body {
         background-color: #f5f5f5;
     }
+    .descripcion-panel {
+        background: #ffffff;
+        padding: 25px;
+        margin: 20px auto;
+        border-radius: 12px;
+        border-left: 6px solid #8cd26f;
+        max-width: 1100px;
+        }
+    .descripcion-panel h2 {
+        font-weight: 700;
+        color: #3d7b37;
+        }
     footer {
         background-color: #e0ffbd;
         text-align: center;
@@ -23,15 +33,27 @@ Recetas saludables
     </style>
 <body>
 
-  <!-- ENCABEZADO -->
         <div class="row">
             <div class="col-12 p-1"  style="background-color: #e0ffbd">
-                <h1 class="text-center">CATALOGO DE RECETAS SALUDABLES</h1>
+                <h1 class="text-center fw-bold">CATALOGO DE RECETAS SALUDABLES</h1>
             </div>
         </div>
         
  <div class="container py-4">
   <div class="row justify-content-center gy-4">
+
+  <div class="descripcion-panel">
+    <h2>¿Para qué sirve el Catálogo de Recetas?</h2>
+    <p>
+        Este catálogo está diseñado para brindarte una selección de recetas saludables, prácticas y equilibradas que 
+        puedes incorporar fácilmente a tu alimentación diaria. Cada receta ha sido elegida pensando en ayudarte a mejorar 
+        tus hábitos, controlar tus porciones y mantener una dieta más variada sin complicaciones.
+        <br><br>
+        Aquí podrás explorar diferentes opciones de comidas para cualquier momento del día, desde desayunos sencillos 
+        hasta platillos más completos. El objetivo es que encuentres alternativas nutritivas que se adapten a tus gustos, 
+        necesidades y estilo de vida, facilitando que lleves una alimentación más consciente y saludable.
+    </p>
+  </div>
 
     <div class="col-12 col-sm-6 col-md-3">
       <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffe49b, #ff9e9e); border: 2px solid black">
