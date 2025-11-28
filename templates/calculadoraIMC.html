@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Calculaodra de Indice de Masa Corporal
+    Calculaodra de Indice de Masa Corporal
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
-<form action="/calcularIMC" method="POST">    
-<style>
-    body {
-        background-color: #f5f5f5;
-    }
-    .descripcion-panel {
+
+<form action="/calcularIMC" method="POST">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .descripcion-panel {
             background: #ffffff;
             padding: 25px;
             margin: 20px auto;
@@ -20,98 +19,104 @@ Calculaodra de Indice de Masa Corporal
             border-left: 6px solid #8cd26f;
             max-width: 1100px;
         }
-    .descripcion-panel h2 {
+        .descripcion-panel h2 {
             font-weight: 700;
             color: #3d7b37;
         }
-    .resultado {
-        height: auto;
-        min-height: 250px;
-        border: 2px dashed #298b02;
-        border-radius: 12px;
-        margin: 40px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: #000000;
-        font-size: 1.2rem;
-        background-color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    footer {
-        background-color: #e0ffbd;
-        text-align: center;
-        padding: 10px;
-        margin-top: 40px;
-        font-weight: 500;
-    }
+        .resultado {
+            height: auto;
+            min-height: 250px;
+            border: 2px dashed #298b02;
+            border-radius: 12px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000000;
+            font-size: 1.2rem;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffbd;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
     </style>
-<body>
 
-<div class="row">
-    <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center fw-bold">CALCULADORA DE INDICE DE MASA CORPORAL</h1>
-    </div>
-</div>
+    <body>
 
-<div class="descripcion-panel">
-    <h2>¿Para qué sirve la Calculadora de IMC?</h2>
-    <p>
-        La calculadora de IMC tiene como objetivo ayudarte a conocer tu Índice de Masa Corporal, una medida que relaciona tu peso 
-        con tu estatura para ofrecerte una idea general sobre tu estado nutricional. Con esta herramienta puedes identificar si tu peso 
-        se encuentra dentro de un rango saludable, si presentas bajo peso, sobrepeso u obesidad, y así tener un punto de referencia claro 
-        sobre tu bienestar físico.
-        <br><br>
-        Este módulo es útil para evaluar de manera sencilla y rápida cómo se encuentra tu composición corporal, ya que el IMC es uno de 
-        los indicadores más utilizados en la salud pública. Aunque no mide directamente la grasa corporal, sí ayuda a detectar posibles 
-        riesgos asociados al peso y te orienta para tomar decisiones informadas respecto a tu salud.
-        <br><br>
-        Además, la calculadora está pensada para que puedas interpretar fácilmente tus resultados. La intención es ofrecerte una guía 
-        accesible que te permita reflexionar sobre tus hábitos actuales y, si es necesario, hacer ajustes en tu alimentación o actividad 
-        física para mejorar tu estilo de vida.
-    </p>
-</div>
-
-{% if imc %}
-<div class="container">
-    <div id="resultado" class="resultado text-center">
-        <h2>Resultados de tu Indice de Masa Corporal</h2>
-        <p class="text-center">Tu IMC es: {{ imc | round(2) }} </p>
-    </div>
-{% endif %}
-
-    <div class="row justify-content-center gy-4">
-        
-
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Peso</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
-            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
-            value = "{{ request.form.get('peso','')}}">
+        <div class="row">
+            <div class="col-12 p-1" style="background-color: #e0ffbd">
+                <h1 class="text-center fw-bold">CALCULADORA DE INDICE DE MASA CORPORAL</h1>
             </div>
         </div>
+
+        <div class="descripcion-panel">
+            <h2>¿Para qué sirve la Calculadora de IMC?</h2>
+            <p>
+                La calculadora de IMC tiene como objetivo ayudarte a conocer tu Índice de Masa Corporal, una medida que relaciona tu peso 
+                con tu estatura para ofrecerte una idea general sobre tu estado nutricional. Con esta herramienta puedes identificar si tu peso 
+                se encuentra dentro de un rango saludable, si presentas bajo peso, sobrepeso u obesidad, y así tener un punto de referencia claro 
+                sobre tu bienestar físico.
+                <br><br>
+                Este módulo es útil para evaluar de manera sencilla y rápida cómo se encuentra tu composición corporal, ya que el IMC es uno de 
+                los indicadores más utilizados en la salud pública. Aunque no mide directamente la grasa corporal, sí ayuda a detectar posibles 
+                riesgos asociados al peso y te orienta para tomar decisiones informadas respecto a tu salud.
+                <br><br>
+                Además, la calculadora está pensada para que puedas interpretar fácilmente tus resultados. La intención es ofrecerte una guía 
+                accesible que te permita reflexionar sobre tus hábitos actuales y, si es necesario, hacer ajustes en tu alimentación o actividad 
+                física para mejorar tu estilo de vida.
+            </p>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Altura</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
-            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
-            value = "{{ request.form.get('altura','')}}">
+        {% if imc %}
+            <div class="container">
+                <div id="resultado" class="resultado text-center">
+                    <h2>Resultados de tu Indice de Masa Corporal</h2>
+                    <p class="text-center">Tu IMC es: {{ imc | round(2) }}</p>
+                </div>
             </div>
+        {% endif %}
+
+        <div class="container">
+            <div class="row justify-content-center gy-4">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Peso</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
+                            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
+                                   value="{{ request.form.get('peso','') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Altura</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
+                            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
+                                   value="{{ request.form.get('altura','') }}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Hay que añadir una tabla sobre el IMC -->
+            <div class="text-center my-5">
+                <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular IMC</button>
+            </div>
+
         </div>
-        </div>
-    </div>
-<!-- Hay que añadir una tabla sobre el imc -->
-    <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" >Calcular IMC</button>
-    </div>
-</div>
+    </body>
 </form>
+
 {% endblock contenido %}
-    

@@ -4,15 +4,14 @@
 Calculadora de Peso Corporal Ideal
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
-<form action="/calcularPCI" method="POST">    
-<style>
-    body {
-        background-color: #f5f5f5;
-    }
-    .descripcion-panel {
+
+<form action="/calcularPCI" method="POST">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .descripcion-panel {
             background: #ffffff;
             padding: 25px;
             margin: 20px auto;
@@ -20,105 +19,110 @@ Calculadora de Peso Corporal Ideal
             border-left: 6px solid #8cd26f;
             max-width: 1100px;
         }
-    .descripcion-panel h2 {
+        .descripcion-panel h2 {
             font-weight: 700;
             color: #3d7b37;
         }
-    .resultado {
-        height: auto;
-        min-height: 250px;
-        border: 2px dashed #298b02;
-        border-radius: 12px;
-        margin: 40px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: #000000;
-        font-size: 1.2rem;
-        background-color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    footer {
-        background-color: #e0ffbd;
-        text-align: center;
-        padding: 10px;
-        margin-top: 40px;
-        font-weight: 500;
-    }
+        .resultado {
+            height: auto;
+            min-height: 250px;
+            border: 2px dashed #298b02;
+            border-radius: 12px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000000;
+            font-size: 1.2rem;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffbd;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
     </style>
-<body>
 
-<div class="row">
-    <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center fw-bold">CALCULADORA DE PESO CORPORAL IDEAL</h1>
-    </div>
-</div>
+    <body>
 
-<div class="descripcion-panel">
-    <h2>¿Para qué sirve la Calculadora de PCI?</h2>
-    <p>
-        La calculadora de PCI (Peso Corporal Ideal) tiene como objetivo ayudarte a estimar el rango de peso que se considera 
-        saludable para ti según tus características físicas. A partir de datos como tu estatura, edad y sexo, este módulo te 
-        proporciona un valor de referencia que sirve como guía para entender en qué punto se encuentra tu peso actual y cuál 
-        podría ser un objetivo razonable para mejorar tu bienestar.
-        <br><br>
-        Aunque el peso ideal puede variar según el contexto personal, esta herramienta utiliza fórmulas reconocidas para ofrecerte 
-        un cálculo aproximado que funciona como orientación general. Gracias a esto podrás identificar si te encuentras dentro de 
-        un rango saludable, por debajo de él o por encima, lo que facilita la toma de decisiones informadas sobre tu alimentación, 
-        actividad física y estilo de vida.
-        <br><br>
-        Además, el módulo te ayuda a comprender mejor la relación entre tu cuerpo y tus hábitos, ya que conocer tu PCI puede motivarte 
-        a establecer metas realistas y alcanzables. Su propósito es ser una herramienta educativa que te brinde información clara, 
-        sencilla y útil para acompañarte en el proceso de construir una mejor salud.
-    </p>
-</div>
-
-{% if pci %}
-<div class="container">
-    <div id="resultado" class="resultado text-center">
-        <h2>Resultados de tu Peso Corporal Ideal</h2>
-        <p class="text-center">Tu PCI es: {{ pci | round(2) }} </p>
-    </div>
-{% endif %}
-
-    <div class="row justify-content-center gy-4">
-        
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Género</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Selecciona tu género</h5>
-            <div class="form-check mt-3">
-                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
-                <label class="form-check-label">Hombre</label>
-            </div>
-            <div class="form-check">
-                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
-                <label class="form-check-label">Mujer</label>
-            </div>
+        <div class="row">
+            <div class="col-12 p-1" style="background-color: #e0ffbd">
+                <h1 class="text-center fw-bold">CALCULADORA DE PESO CORPORAL IDEAL</h1>
             </div>
         </div>
+
+        <div class="descripcion-panel">
+            <h2>¿Para qué sirve la Calculadora de PCI?</h2>
+            <p>
+                La calculadora de PCI (Peso Corporal Ideal) tiene como objetivo ayudarte a estimar el rango de peso que se considera 
+                saludable para ti según tus características físicas. A partir de datos como tu estatura, edad y sexo, este módulo te 
+                proporciona un valor de referencia que sirve como guía para entender en qué punto se encuentra tu peso actual y cuál 
+                podría ser un objetivo razonable para mejorar tu bienestar.
+                <br><br>
+                Aunque el peso ideal puede variar según el contexto personal, esta herramienta utiliza fórmulas reconocidas para ofrecerte 
+                un cálculo aproximado que funciona como orientación general. Gracias a esto podrás identificar si te encuentras dentro de 
+                un rango saludable, por debajo de él o por encima, lo que facilita la toma de decisiones informadas sobre tu alimentación, 
+                actividad física y estilo de vida.
+                <br><br>
+                Además, el módulo te ayuda a comprender mejor la relación entre tu cuerpo y tus hábitos, ya que conocer tu PCI puede motivarte 
+                a establecer metas realistas y alcanzables. Su propósito es ser una herramienta educativa que te brinde información clara, 
+                sencilla y útil para acompañarte en el proceso de construir una mejor salud.
+            </p>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Altura</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
-            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
-            value = "{{ request.form.get('altura','')}}">
+        {% if pci %}
+        <div class="container">
+            <div id="resultado" class="resultado text-center">
+                <h2>Resultados de tu Peso Corporal Ideal</h2>
+                <p class="text-center">Tu PCI es: {{ pci | round(2) }} </p>
             </div>
         </div>
+        {% endif %}
+
+        <div class="container">
+            <div class="row justify-content-center gy-4">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Género</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Selecciona tu género</h5>
+                            <div class="form-check mt-3">
+                                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
+                                <label class="form-check-label">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
+                                <label class="form-check-label">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Altura</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
+                            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
+                                   value="{{ request.form.get('altura','') }}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center my-5">
+                <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular PCI</button>
+            </div>
+
         </div>
-    </div>
-
-
-    <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" >Calcular PCI</button>
-    </div>
-</div>
+    </body>
 </form>
+
 {% endblock contenido %}
-    

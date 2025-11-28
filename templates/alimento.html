@@ -4,10 +4,9 @@
 Caracteristicas de tu alimento
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
-    <style>
+
+<style>
     body {
         background-color: #e0ffbd;
     }
@@ -18,36 +17,43 @@ Caracteristicas de tu alimento
         margin-top: 40px;
         font-weight: 500;
     }
-    </style>
-</head>
+</style>
+
 <body>
-    
-<div class="container mt-5">
-    <h1 class="text-center mb-4">{{ alimento.name }}</h1>
 
-    <div class="card p-4 shadow-sm mb-4">
-        <p><strong>FDC ID:</strong> {{ alimento.fdcId }}</p>
-        <p><strong>Categoría:</strong> {{ alimento.foodCategory }}</p>
-        <p><strong>Fuente:</strong> {{ alimento.dataSource }}</p>
-        <p><strong>Marca:</strong> {{ alimento.brandOwner }}</p>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">{{ alimento.name }}</h1>
+
+        <div class="card p-4 shadow-sm mb-4">
+            <p><strong>FDC ID:</strong> {{ alimento.fdcId }}</p>
+            <p><strong>Categoría:</strong> {{ alimento.foodCategory }}</p>
+            <p><strong>Fuente:</strong> {{ alimento.dataSource }}</p>
+            <p><strong>Marca:</strong> {{ alimento.brandOwner }}</p>
+        </div>
+
+        <h3 class="mb-3">Nutrientes</h3>
+
+        {% if alimento.foodNutrients %}
+            <ul class="list-group">
+                {% for nutrient in alimento.foodNutrients %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ nutrient.name }}
+                        <span class="badge bg-primary rounded-pill">
+                            {{ nutrient.value }} {{ nutrient.unit }}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="alert alert-warning">
+                No se encontraron nutrientes para este alimento.
+            </div>
+        {% endif %}
+
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('analisis') }}" class="btn btn-secondary">Volver</a>
+        </div>
+
     </div>
 
-    <h3 class="mb-3">Nutrientes</h3>
-    {% if alimento.foodNutrients %}
-        <ul class="list-group">
-            {% for nutrient in alimento.foodNutrients %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {{ nutrient.name }}
-                    <span class="badge bg-primary rounded-pill">{{ nutrient.value }} {{ nutrient.unit }}</span>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <div class="alert alert-warning">No se encontraron nutrientes para este alimento.</div>
-    {% endif %}
-
-    <div class="mt-4 text-center">
-        <a href="{{ url_for('analisis') }}" class="btn btn-secondary">Volver</a>
-    </div>
-</div>
 {% endblock contenido %}

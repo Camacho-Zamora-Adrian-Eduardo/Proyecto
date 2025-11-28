@@ -4,9 +4,8 @@
 Analizador de comida
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
+
 <style>
     body {
         background-color: #f5f5f5;
@@ -18,11 +17,11 @@ Analizador de comida
         border-radius: 12px;
         border-left: 6px solid #8cd26f;
         max-width: 1100px;
-        }
+    }
     .descripcion-panel h2 {
         font-weight: 700;
         color: #3d7b37;
-        }
+    }
     footer {
         background-color: #e0ffbd;
         text-align: center;
@@ -30,55 +29,56 @@ Analizador de comida
         margin-top: 40px;
         font-weight: 500;
     }
-    </style>
-</head>
+</style>
+
 <body>
 
-        <div class="row">
-            <div class="col-12 p-1"  style="background-color: #e0ffbd">
-                <h1 class="text-center fw-bold">ANALISIS DE COMIDA CON LAS APIS</h1>
+    <div class="row">
+        <div class="col-12 p-1" style="background-color: #e0ffbd">
+            <h1 class="text-center fw-bold">ANALISIS DE COMIDA CON LAS APIS</h1>
+        </div>
+    </div>
+
+    <div class="descripcion-panel">
+        <h2>¿Para qué sirve el Análisis de Recetas?</h2>
+        <p>
+            Esta sección está pensada para ayudarte a comprender de forma detallada la composición nutricional de cualquier 
+            receta que prepares. Al ingresar los ingredientes y las cantidades que utilizas habitualmente, podrás obtener un 
+            análisis aproximado de los nutrientes más importantes como calorías, carbohidratos, proteínas y grasas, así como 
+            una visión general del equilibrio de la receta.
+            <br><br>
+            El objetivo principal es brindarte una herramienta sencilla pero útil para identificar si una preparación es 
+            adecuada para tus necesidades, si aporta los nutrientes necesarios o si contiene cantidades excesivas de ciertos 
+            componentes. Con esta información podrás ajustar tus recetas, mejorar tu alimentación diaria y tomar decisiones 
+            más conscientes al momento de cocinar.
+            <br><br>
+            Además, este análisis te permite comparar distintas recetas y aprender a reconocer cuáles opciones son más saludables, 
+            facilitando que puedas adaptar tu alimentación a un estilo de vida más equilibrado y alineado con tus metas personales.
+        </p>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Buscar alimento</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('search_alimento') }}" method="POST" class="card p-4 shadow-sm">
+            <div class="mb-3">
+                <label for="alimento" class="form-label">Nombre del alimento:</label>
+                <input type="text" class="form-control" id="alimento" name="alimento_name" placeholder="Ej: banana" required>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </form>
 
-<div class="descripcion-panel">
-    <h2>¿Para qué sirve el Análisis de Recetas?</h2>
-    <p>
-        Esta sección está pensada para ayudarte a comprender de forma detallada la composición nutricional de cualquier 
-        receta que prepares. Al ingresar los ingredientes y las cantidades que utilizas habitualmente, podrás obtener un 
-        análisis aproximado de los nutrientes más importantes como calorías, carbohidratos, proteínas y grasas, así como 
-        una visión general del equilibrio de la receta.
-        <br><br>
-        El objetivo principal es brindarte una herramienta sencilla pero útil para identificar si una preparación es 
-        adecuada para tus necesidades, si aporta los nutrientes necesarios o si contiene cantidades excesivas de ciertos 
-        componentes. Con esta información podrás ajustar tus recetas, mejorar tu alimentación diaria y tomar decisiones 
-        más conscientes al momento de cocinar.
-        <br><br>
-        Además, este análisis te permite comparar distintas recetas y aprender a reconocer cuáles opciones son más saludables, 
-        facilitando que puedas adaptar tu alimentación a un estilo de vida más equilibrado y alineado con tus metas personales.
-    </p>
-</div>
+    </div>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">Buscar alimento</h1>
-
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <form action="{{ url_for('search_alimento') }}" method="POST" class="card p-4 shadow-sm">
-        <div class="mb-3">
-            <label for="alimento" class="form-label">Nombre del alimento:</label>
-            <input type="text" class="form-control" id="alimento" name="alimento_name" placeholder="Ej: banana" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Buscar</button>
-    </form>
-</div>
 {% endblock contenido %}

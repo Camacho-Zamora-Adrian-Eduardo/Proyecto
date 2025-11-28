@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Calculadora de Tasa Metabolica Basal
+    Calculadora de Tasa Metabolica Basal
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
-<form action="/calcularTMB" method="POST">    
-<style>
-    body {
-        background-color: #f5f5f5;
-    }
-    .descripcion-panel {
+
+<form action="/calcularTMB" method="POST">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .descripcion-panel {
             background: #ffffff;
             padding: 25px;
             margin: 20px auto;
@@ -20,130 +19,135 @@ Calculadora de Tasa Metabolica Basal
             border-left: 6px solid #8cd26f;
             max-width: 1100px;
         }
-    .descripcion-panel h2 {
+        .descripcion-panel h2 {
             font-weight: 700;
             color: #3d7b37;
         }
-    .resultado {
-        height: auto;
-        min-height: 250px;
-        border: 2px dashed #298b02;
-        border-radius: 12px;
-        margin: 40px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: #000000;
-        font-size: 1.2rem;
-        background-color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    footer {
-        background-color: #e0ffbd;
-        text-align: center;
-        padding: 10px;
-        margin-top: 40px;
-        font-weight: 500;
-    }
+        .resultado {
+            height: auto;
+            min-height: 250px;
+            border: 2px dashed #298b02;
+            border-radius: 12px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000000;
+            font-size: 1.2rem;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffbd;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
     </style>
-<body>
 
-<div class="row">
-    <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center fw-bold">CALCULADORA DE TASA METABOLICA BASAL</h1>
-    </div>
-</div>
+    <body>
 
-<div class="descripcion-panel">
-    <h2>¿Para qué sirve la Calculadora de TMB?</h2>
-    <p>
-        La calculadora de TMB está diseñada para ayudarte a conocer cuántas calorías necesita tu cuerpo para funcionar 
-        correctamente aun cuando estás en reposo. La Tasa Metabólica Basal representa la energía mínima que requiere tu 
-        organismo para realizar funciones vitales como respirar, mantener la temperatura corporal, hacer circular la sangre 
-        y permitir el correcto funcionamiento de los órganos.
-        <br><br>
-        Este módulo te permite ingresar datos como tu edad, estatura, peso y sexo, para obtener un cálculo aproximado y 
-        personalizado. Con esta información, podrás comprender mejor tus necesidades energéticas y tener una base más clara 
-        para planificar tus objetivos de nutrición, ya sea mantener tu peso, aumentarlo o reducirlo de forma saludable.
-        <br><br>
-        Además, la calculadora te ayuda a identificar tu rango de peso ideal y te ofrece una interpretación según tu categoría 
-        actual, como peso bajo, normal, sobrepeso u obesidad. De esta manera, no solo conoces tu TMB, sino también el contexto 
-        de tu situación actual.
-        <br><br>
-        Este módulo es útil como una guía educativa que facilita la toma de decisiones informadas y responsables respecto a 
-        tu alimentación y tu estilo de vida. Su propósito es brindarte una herramienta práctica que puedas utilizar para conocer 
-        mejor tu cuerpo y desarrollar hábitos que contribuyan a tu bienestar.
-    </p>
-</div>
-
-{% if tmb %}
-<div class="container">
-    <div id="resultado" class="resultado text-center">
-        <h2>Resultados de tu Tasa Metabólica Basal</h2>
-        <p class="text-center">Tu TMB es: {{ tmb | round(2) }} </p>
-    </div>
-{% endif %}
-
-    <div class="row justify-content-center gy-4">
-        
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #f6f87f; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Edad</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu edad</h5>
-            <input id="edad" type="number" class="form-control mt-3" name="edad" placeholder="Ejemplo: 20" required
-            value = "{{ request.form.get('edad','')}}">
+        <div class="row">
+            <div class="col-12 p-1" style="background-color: #e0ffbd">
+                <h1 class="text-center fw-bold">CALCULADORA DE TASA METABOLICA BASAL</h1>
             </div>
         </div>
+
+        <div class="descripcion-panel">
+            <h2>¿Para qué sirve la Calculadora de TMB?</h2>
+            <p>
+                La calculadora de TMB está diseñada para ayudarte a conocer cuántas calorías necesita tu cuerpo para funcionar 
+                correctamente aun cuando estás en reposo. La Tasa Metabólica Basal representa la energía mínima que requiere tu 
+                organismo para realizar funciones vitales como respirar, mantener la temperatura corporal, hacer circular la sangre 
+                y permitir el correcto funcionamiento de los órganos.
+                <br><br>
+                Este módulo te permite ingresar datos como tu edad, estatura, peso y sexo, para obtener un cálculo aproximado y 
+                personalizado. Con esta información, podrás comprender mejor tus necesidades energéticas y tener una base más clara 
+                para planificar tus objetivos de nutrición, ya sea mantener tu peso, aumentarlo o reducirlo de forma saludable.
+                <br><br>
+                Además, la calculadora te ayuda a identificar tu rango de peso ideal y te ofrece una interpretación según tu categoría 
+                actual, como peso bajo, normal, sobrepeso u obesidad. De esta manera, no solo conoces tu TMB, sino también el contexto 
+                de tu situación actual.
+                <br><br>
+                Este módulo es útil como una guía educativa que facilita la toma de decisiones informadas y responsables respecto a 
+                tu alimentación y tu estilo de vida. Su propósito es brindarte una herramienta práctica que puedas utilizar para conocer 
+                mejor tu cuerpo y desarrollar hábitos que contribuyan a tu bienestar.
+            </p>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Género</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Selecciona tu género</h5>
-            <div class="form-check mt-3">
-                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
-                <label class="form-check-label">Hombre</label>
+        {% if tmb %}
+            <div class="container">
+                <div id="resultado" class="resultado text-center">
+                    <h2>Resultados de tu Tasa Metabólica Basal</h2>
+                    <p class="text-center">Tu TMB es: {{ tmb | round(2) }} </p>
+                </div>
             </div>
-            <div class="form-check">
-                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
-                <label class="form-check-label">Mujer</label>
-            </div>
-            </div>
-        </div>
-        </div>
+        {% endif %}
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Peso</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
-            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
-            value = "{{ request.form.get('peso','')}}">
+        <div class="container">
+            <div class="row justify-content-center gy-4">
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #f6f87f; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Edad</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu edad</h5>
+                            <input id="edad" type="number" class="form-control mt-3" name="edad" placeholder="Ejemplo: 20" required
+                                   value="{{ request.form.get('edad','') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Género</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Selecciona tu género</h5>
+                            <div class="form-check mt-3">
+                                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
+                                <label class="form-check-label">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
+                                <label class="form-check-label">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Peso</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
+                            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
+                                   value="{{ request.form.get('peso','') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Altura</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
+                            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
+                                   value="{{ request.form.get('altura','') }}">
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-        </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Altura</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
-            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
-            value = "{{ request.form.get('altura','')}}">
+            <div class="text-center my-5">
+                <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular TMB</button>
             </div>
-        </div>
-        </div>
-    </div>
 
-
-    <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;" >Calcular TMB</button>
-    </div>
-</div>
+        </div>
+    </body>
 </form>
+
 {% endblock contenido %}
-    

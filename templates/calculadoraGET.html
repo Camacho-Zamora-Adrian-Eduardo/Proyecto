@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Calculadora de Gasto Energetico Diario
+    Calculadora de Gasto Energetico Diario
 {% endblock titulo %}
 
-
 {% block contenido %}
-    
-<form action="/calcularGET" method="POST">    
-<style>
-    body {
-        background-color: #f5f5f5;
-    }
-    .descripcion-panel {
+
+<form action="/calcularGET" method="POST">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .descripcion-panel {
             background: #ffffff;
             padding: 25px;
             margin: 20px auto;
@@ -20,143 +19,148 @@ Calculadora de Gasto Energetico Diario
             border-left: 6px solid #8cd26f;
             max-width: 1100px;
         }
-    .descripcion-panel h2 {
+        .descripcion-panel h2 {
             font-weight: 700;
             color: #3d7b37;
         }
-    .resultado {
-        height: auto;
-        min-height: 250px;
-        border: 2px dashed #298b02;
-        border-radius: 12px;
-        margin: 40px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: #000000;
-        font-size: 1.2rem;
-        background-color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    footer {
-        background-color: #e0ffbd;
-        text-align: center;
-        padding: 10px;
-        margin-top: 40px;
-        font-weight: 500;
-    }
+        .resultado {
+            height: auto;
+            min-height: 250px;
+            border: 2px dashed #298b02;
+            border-radius: 12px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000000;
+            font-size: 1.2rem;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background-color: #e0ffbd;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
     </style>
-<body>
 
-    <div class="row">
-    <div class="col-12 p-1" style="background-color: #e0ffbd">
-        <h1 class="text-center fw-bold">CALCULADORA DE GASTO ENERGETICO DIARIO</h1>
-    </div>
-</div>
+    <body>
 
-<div class="descripcion-panel">
-    <h2>¿Para qué sirve la Calculadora de GET?</h2>
-    <p>
-        La calculadora de GET te ayuda a conocer el Gasto Energético Total, que es la cantidad aproximada de calorías que tu cuerpo 
-        necesita al día para funcionar correctamente dependiendo de tu edad, peso, estatura, género y nivel de actividad física. 
-        Este valor es fundamental para comprender cuánta energía consumes y cuánta necesitas, lo que te permite tomar decisiones 
-        más conscientes sobre tu alimentación.
-        <br><br>
-        Con esta herramienta puedes saber si tu ingesta diaria de alimentos está por encima o por debajo de tus necesidades energéticas. 
-        Esto es especialmente útil si deseas mantener tu peso, bajarlo o aumentarlo, ya que el equilibrio entre lo que comes y lo que 
-        gastas influye directamente en tus resultados y en tu bienestar general.
-        <br><br>
-        El objetivo del módulo es brindarte una referencia clara y sencilla sobre tu situación actual, ayudándote a entender tu estilo 
-        de vida y cómo tus hábitos afectan tu gasto energético. De esta forma, tendrás una mejor guía para ajustar tus actividades 
-        diarias o tu alimentación de acuerdo con tus metas personales.
-    </p>
-</div>
-
-{% if get %}
-<div class="container">
-    <div id="resultado" class="resultado text-center">
-        <h2>Resultados de tu Gasto Energetico Diario</h2>
-        <p class="text-center">Tu GET es: {{ get | round(2) }} calorías</p>
-    </div>
-{% endif %}
-
-    <div class="row justify-content-center gy-4">
-        
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #f6f87f; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Edad</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu edad</h5>
-            <input id="edad" type="number" class="form-control mt-3" name="edad" placeholder="Ejemplo: 20" required
-            value = "{{ request.form.get('edad','')}}">
+        <div class="row">
+            <div class="col-12 p-1" style="background-color: #e0ffbd">
+                <h1 class="text-center fw-bold">CALCULADORA DE GASTO ENERGETICO DIARIO</h1>
             </div>
         </div>
+
+        <div class="descripcion-panel">
+            <h2>¿Para qué sirve la Calculadora de GET?</h2>
+            <p>
+                La calculadora de GET te ayuda a conocer el Gasto Energético Total, que es la cantidad aproximada de calorías que tu cuerpo 
+                necesita al día para funcionar correctamente dependiendo de tu edad, peso, estatura, género y nivel de actividad física. 
+                Este valor es fundamental para comprender cuánta energía consumes y cuánta necesitas, lo que te permite tomar decisiones 
+                más conscientes sobre tu alimentación.
+                <br><br>
+                Con esta herramienta puedes saber si tu ingesta diaria de alimentos está por encima o por debajo de tus necesidades energéticas. 
+                Esto es especialmente útil si deseas mantener tu peso, bajarlo o aumentarlo, ya que el equilibrio entre lo que comes y lo que 
+                gastas influye directamente en tus resultados y en tu bienestar general.
+                <br><br>
+                El objetivo del módulo es brindarte una referencia clara y sencilla sobre tu situación actual, ayudándote a entender tu estilo 
+                de vida y cómo tus hábitos afectan tu gasto energético. De esta forma, tendrás una mejor guía para ajustar tus actividades 
+                diarias o tu alimentación de acuerdo con tus metas personales.
+            </p>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Género</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Selecciona tu género</h5>
-            <div class="form-check mt-3">
-                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
-                <label class="form-check-label">Hombre</label>
+        {% if get %}
+            <div class="container">
+                <div id="resultado" class="resultado text-center">
+                    <h2>Resultados de tu Gasto Energetico Diario</h2>
+                    <p class="text-center">Tu GET es: {{ get | round(2) }} calorías</p>
+                </div>
             </div>
-            <div class="form-check">
-                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
-                <label class="form-check-label">Mujer</label>
-            </div>
-            </div>
-        </div>
-        </div>
+        {% endif %}
 
-        <div class="col-sm-12 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #83d8ff; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Actividad Física</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">¿Qué tan activo eres?</h5>
-            <select id="actividad" class="form-select mt-3" name="actividad" required>
-                <option value="">Seleccione su nivel</option>
-                <option value="sedentario">Sedentario (no hago ejercicio)</option>
-                <option value="ligero">Actividad ligera (1-2 dias/semana)</option>
-                <option value="moderado">Actividad moderada (3-4 dias/semana)</option>
-                <option value="intenso">Actividad alta (5-6 dias/semana)</option>
-                <option value="muy_intenso">Actividad alta (7 dias/semana)</option>
-            </select>
-            </div>
-        </div>
-        </div>
+        <div class="container">
+            <div class="row justify-content-center gy-4">
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Peso</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
-            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
-            value = "{{ request.form.get('peso','')}}">
-            </div>
-        </div>
-        </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #f6f87f; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Edad</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu edad</h5>
+                            <input id="edad" type="number" class="form-control mt-3" name="edad" placeholder="Ejemplo: 20" required
+                                   value="{{ request.form.get('edad','') }}">
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-sm-6 col-md-4">
-        <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
-            <div class="card-header text-center fw-bold">Altura</div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
-            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
-            value = "{{ request.form.get('altura','')}}">
-            </div>
-        </div>
-        </div>
-    </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #df99ff; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Género</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Selecciona tu género</h5>
+                            <div class="form-check mt-3">
+                                <input id="hombre" class="form-check-input" type="radio" name="genero" value="hombre" required>
+                                <label class="form-check-label">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="mujer" class="form-check-input" type="radio" name="genero" value="mujer" required>
+                                <label class="form-check-label">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-  
-    <div class="text-center my-5">
-        <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular GET</button>
-    </div>
-</div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #83d8ff; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Actividad Física</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">¿Qué tan activo eres?</h5>
+                            <select id="actividad" class="form-select mt-3" name="actividad" required>
+                                <option value="">Seleccione su nivel</option>
+                                <option value="sedentario">Sedentario (no hago ejercicio)</option>
+                                <option value="ligero">Actividad ligera (1-2 dias/semana)</option>
+                                <option value="moderado">Actividad moderada (3-4 dias/semana)</option>
+                                <option value="intenso">Actividad alta (5-6 dias/semana)</option>
+                                <option value="muy_intenso">Actividad alta (7 dias/semana)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ffc88a; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Peso</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu peso (kg)</h5>
+                            <input id="peso" type="number" class="form-control mt-3" name="peso" placeholder="Ejemplo: 70" required
+                                   value="{{ request.form.get('peso','') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="card text h-100 shadow-sm" style="background-color: #ff8ca9; border: 2px solid black">
+                        <div class="card-header text-center fw-bold">Altura</div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Ingresa tu altura (cm)</h5>
+                            <input id="altura" type="number" class="form-control mt-3" name="altura" placeholder="Ejemplo: 170" required
+                                   value="{{ request.form.get('altura','') }}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center my-5">
+                <button type="submit" class="btn btn-success btn-lg px-5" style="background-color: #21c400;">Calcular GET</button>
+            </div>
+
+        </div>
+    </body>
 </form>
+
 {% endblock contenido %}
-    

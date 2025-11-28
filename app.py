@@ -468,7 +468,7 @@ def interfaz():
 
 @app.route("/educacion")
 def educacion():
-    return render_template("Educacion.html")
+    return render_template("educacion.html")
 
 
 if __name__ == "__main__":

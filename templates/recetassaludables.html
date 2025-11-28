@@ -4,10 +4,8 @@
 Recetas saludables
 {% endblock titulo %}
 
-
 {% block contenido %}
-  
-  <style>
+<style>
     body {
         background-color: #f5f5f5;
     }
@@ -18,11 +16,11 @@ Recetas saludables
         border-radius: 12px;
         border-left: 6px solid #8cd26f;
         max-width: 1100px;
-        }
+    }
     .descripcion-panel h2 {
         font-weight: 700;
         color: #3d7b37;
-        }
+    }
     footer {
         background-color: #e0ffbd;
         text-align: center;
@@ -30,192 +28,195 @@ Recetas saludables
         margin-top: 40px;
         font-weight: 500;
     }
-    </style>
+</style>
+
 <body>
 
-        <div class="row">
-            <div class="col-12 p-1"  style="background-color: #e0ffbd">
-                <h1 class="text-center fw-bold">CATALOGO DE RECETAS SALUDABLES</h1>
+    <div class="row">
+        <div class="col-12 p-1" style="background-color: #e0ffbd">
+            <h1 class="text-center fw-bold">CATALOGO DE RECETAS SALUDABLES</h1>
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <div class="row justify-content-center gy-4">
+
+            <div class="descripcion-panel">
+                <h2>¿Para qué sirve el Catálogo de Recetas?</h2>
+                <p>
+                    Este catálogo está diseñado para brindarte una selección de recetas saludables, prácticas y equilibradas que 
+                    puedes incorporar fácilmente a tu alimentación diaria. Cada receta ha sido elegida pensando en ayudarte a mejorar 
+                    tus hábitos, controlar tus porciones y mantener una dieta más variada sin complicaciones.
+                    <br><br>
+                    Aquí podrás explorar diferentes opciones de comidas para cualquier momento del día, desde desayunos sencillos 
+                    hasta platillos más completos. El objetivo es que encuentres alternativas nutritivas que se adapten a tus gustos, 
+                    necesidades y estilo de vida, facilitando que lleves una alimentación más consciente y saludable.
+                </p>
             </div>
-        </div>
-        
- <div class="container py-4">
-  <div class="row justify-content-center gy-4">
 
-  <div class="descripcion-panel">
-    <h2>¿Para qué sirve el Catálogo de Recetas?</h2>
-    <p>
-        Este catálogo está diseñado para brindarte una selección de recetas saludables, prácticas y equilibradas que 
-        puedes incorporar fácilmente a tu alimentación diaria. Cada receta ha sido elegida pensando en ayudarte a mejorar 
-        tus hábitos, controlar tus porciones y mantener una dieta más variada sin complicaciones.
-        <br><br>
-        Aquí podrás explorar diferentes opciones de comidas para cualquier momento del día, desde desayunos sencillos 
-        hasta platillos más completos. El objetivo es que encuentres alternativas nutritivas que se adapten a tus gustos, 
-        necesidades y estilo de vida, facilitando que lleves una alimentación más consciente y saludable.
-    </p>
-  </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #ffe49b, #ff9e9e); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Bowl Fresco de Durazno</div>
+                    <img src="../static/img/portada1.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA1.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffe49b, #ff9e9e); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Bowl Fresco de Durazno</div>
-        <img src="../static/img/portada1.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA1.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #fcf486, #a8ec70); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Tostada de Aguacate</div>
+                    <img src="../static/img/portada2.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA2.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #ffa3c9, #ff6e6e); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Licuado Berry con Avena</div>
+                    <img src="../static/img/portada3.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA3.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #ffe284, #cf8d21); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Pollo Citrico Asado</div>
+                    <img src="../static/img/portada4.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA4.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #ffcc80, #fffc41); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Pollo Asado con Verdura</div>
+                    <img src="../static/img/portada5.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA5.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #9ee7f5, #ffccb3); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Ensalada arcoiris</div>
+                    <img src="../static/img/portada6.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA6.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #fff780, #ff9f22); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Licuado Tropical</div>
+                    <img src="../static/img/portada7.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA7.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #98fb98, #3cb371); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Guisado Verde de Legumbres</div>
+                    <img src="../static/img/portada8.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA8.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #d5ec52, #fffacd); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Calabacitas Rellenas al Vapor</div>
+                    <img src="../static/img/portada9.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA9.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #c9ced1, #506aff); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Pescado a la Veracruzana</div>
+                    <img src="../static/img/portada10.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA10.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #fff38a, #be6535); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Crema de Platano y Cacao</div>
+                    <img src="../static/img/portada11.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA11.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #ffbc58, #ff3d3d); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Manzanas Doradas a la Miel</div>
+                    <img src="../static/img/portada12.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA12.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #f8c8dc, #ff6f9c); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Helado de Fresas Cream</div>
+                    <img src="../static/img/portada13.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA13.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #c8a2c8, #6a5acd); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Tostada de Arandanos</div>
+                    <img src="../static/img/portada14.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA14.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #a7e5ff, #4d9fd5); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Carne Asada con Verdura</div>
+                    <img src="../static/img/portada15.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA15.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card h-100 shadow" style="background: linear-gradient(90deg, #b0f2c2, #5db38e); border: 2px solid black">
+                    <div class="card-header text-center fw-bold">Fresh Mint de Frutas</div>
+                    <img src="../static/img/portada16.png" class="img-fluid">
+                    <div class="card-body">
+                        <a href="../static/img/RECETA16.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
 
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #fcf486, #a8ec70); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Tostada de Aguacate</div>
-        <img src="../static/img/portada2.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA2.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffa3c9, #ff6e6e); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Licuado Berry con Avena</div>
-        <img src="../static/img/portada3.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA3.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffe284, #cf8d21); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Pollo Citrico Asado</div>
-        <img src="../static/img/portada4.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA4.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffcc80, #fffc41); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Pollo Asado con Verdura</div>
-        <img src="../static/img/portada5.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA5.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #9ee7f5, #ffccb3); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Ensalada arcoiris</div>
-        <img src="../static/img/portada6.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA6.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #fff780, #ff9f22); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Licuado Tropical</div>
-        <img src="../static/img/portada7.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA7.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #98fb98, #3cb371); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Guisado Verde de Legumbres</div>
-        <img src="../static/img/portada8.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA8.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #d5ec52, #fffacd); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Calabacitas Rellenas al Vapor</div>
-        <img src="../static/img/portada9.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA9.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #c9ced1, #506aff); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Pescado a la Veracruzana</div>
-        <img src="../static/img/portada10.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA10.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #fff38a, #be6535); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Crema de Platano y Cacao</div>
-        <img src="../static/img/portada11.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA11.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #ffbc58, #ff3d3d); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Manzanas Doradas a la Miel</div>
-        <img src="../static/img/portada12.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA12.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #f8c8dc, #ff6f9c); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Helado de Fresas Cream</div>
-        <img src="../static/img/portada13.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA13.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #c8a2c8, #6a5acd); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Tostada de Arandanos</div>
-        <img src="../static/img/portada14.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA14.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #a7e5ff, #4d9fd5); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Carne Asada con Verdura</div>
-        <img src="../static/img/portada15.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA15.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-6 col-md-3">
-      <div class="card h-100 shadow-sm" style="background: linear-gradient(90deg, #b0f2c2, #5db38e); border: 2px solid black">
-        <div class="card-header text-center fw-bold">Fresh Mint de Frutas</div>
-        <img src="../static/img/portada16.png" class="img-fluid">
-        <div class="card-body">
-          <a href="../static/img/RECETA16.png" class="btn btn-light w-100" style="border: 2px solid #000000;">Ver receta</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+</body>
 
 {% endblock contenido %}
