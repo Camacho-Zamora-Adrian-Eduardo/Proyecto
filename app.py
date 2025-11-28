@@ -447,16 +447,24 @@ def crearcuenta():
 @app.route('/registrame', methods=['POST'])
 def registrame():
 
-    nombre = request.form.get("nombreCompleto")
-    correo = request.form.get("correo")
-    password = request.form.get("contraseña")
-
-    if not nombre or not correo or not password:
-        flash("Todos los campos son obligatorios", "error")
+    
+    nombre = request.form.get("nombre")
+    apellido = request.form.get("apellidos")
+    email = request.form.get("email")
+    password = request.form.get("pasword")
+    
+    if not nombre or not email or not password:
+        flash("Todos los campos son obligatorios", "error")  
         return render_template("crearcuenta.html")
 
+    Usuarios_registrados[email] = {
+        "nombre": nombre,
+        "password": password
+        }
+    
+
     flash(f"Tu cuenta ha sido creada, {nombre}")
-    return redirect("interfazInicio.html")
+    return redirect("/interfaz")
 
 @app.route("/recetas")
 def recetas():

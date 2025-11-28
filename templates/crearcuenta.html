@@ -36,15 +36,15 @@
             <section class="row">
                 <div class="col-6 mb-3">
                     <label for="nombre" class="form-label">NOMBRES</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" required>
                 </div>
                 <div class="col-6 mb-3">
                     <label for="apellidos" class="form-label">APELLIDOS</label>
-                    <input type="text" class="form-control" id="apellidos" placeholder="Apelidos" required>
+                    <input type="text" class="form-control" id="apellidos" placeholder="Apelidos" name="apellidos" required>
                 </div>
             </section>
 
-        <!-- Fecha de nacimiento -->
+
         <label class="form-label">Fecha de nacimiento</label>
         <div class="row mb-3">
             <div class="col-4">
@@ -155,27 +155,27 @@
         <label class="form-label">Género</label>
         <div class="d-flex mb-3 justify-content-between">
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="mujer" required>
+            <input class="form-check-input" type="radio" name="genero" id="mujer" name="mujer" required>
             <label class="form-check-label" for="mujer">Mujer</label>
             </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="hombre" required>
+            <input class="form-check-input" type="radio" name="genero" id="hombre" name="hombre" required>
             <label class="form-check-label" for="hombre">Hombre</label>
             </div>
             <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="personalizado" required>
+            <input class="form-check-input" type="radio" name="genero" id="personalizado" name="personalizado" required>
             <label class="form-check-label" for="personalizado">Personalizado</label>
             </div>
         </div>
 
             <div>
                 <label for="email" class="form-label">Correo Electronico</label>
-                <input type="email" class="form-control" id="email" placeholder="Numero de celular o Correo electronico" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Numero de celular o Correo electronico" required>
             </div>
 
             <div class="mb-3">
-                <label for="pass" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="pass" placeholder="Contraseña nueva" required>
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña nueva" required>
             </div>
 
         <div class="d-grid">
