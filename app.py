@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import requests
 from deep_translator import GoogleTranslator
 
-
 app = Flask(__name__)
-app.config ['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
+app.config['SECRET_KEY'] = '20_cosas_que_no_sabias_de_las_empanadas'
 
-
-Usuarios_registrados = {"admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}}
+Usuarios_registrados = {
+    "admin@cetis.edu.mx": {"nombre": "Admin", "password": "Cetis61"}
+}
 
 Nutrientes_importantes = {
     "Energy",
@@ -23,6 +23,7 @@ Nutrientes_importantes = {
     "Vitamin C, total ascorbic acid",
     "Vitamin A, RAE"
 }
+
 Traducciones = {
     "Energy": "Energía (kcal)",
     "Protein": "Proteína",
@@ -36,16 +37,19 @@ Traducciones = {
     "Potassium, K": "Potasio",
     "Vitamin C, total ascorbic acid": "Vitamina C",
     "Vitamin A, RAE": "Vitamina A",
-
 }
 
 api_key = "b48he0KjRd6oDnYooKxLr1OCO9pCoJPuX1bqmvDu"
 API_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
 
 
-
 @app.route("/")
 def index():
+    return render_template("inicio.html")
+
+
+@app.route("/iniciosesion")
+def iniciosesion():
     return render_template("iniciosesion.html")
 
 
@@ -75,10 +79,10 @@ def validasesion():
         return render_template('iniciosesion.html')
 
 
-
 @app.route("/panel")
 def panel():
     return render_template("panelControl.html")
+
 
 @app.route("/recomendaciones", methods=["POST"])
 def recomendaciones():
@@ -99,7 +103,6 @@ def recomendaciones():
 
     recomendaciones = []
 
-
     if sueno < 7:
         recomendaciones.append("*Duerme más de 7 horas al día para mejorar tu rendimiento.*")
     else:
@@ -117,7 +120,6 @@ def recomendaciones():
     else:
         recomendaciones.append(" Excelente nivel de actividad física.")
 
-    
     rec = {
         "cereales": 6,
         "proteinas": 5,
@@ -139,66 +141,68 @@ def recomendaciones():
             recomendaciones.append(bueno)
 
     revisar_consumo("cereales", cereales, rec["cereales"],
-        " Buen consumo de cereales.",
-        " *Te faltan cereales integrales en tu alimentación.*",
-        " *Estás consumiendo demasiados cereales, reduce un poco.*"
-    )
+                    " Buen consumo de cereales.",
+                    " *Te faltan cereales integrales en tu alimentación.*",
+                    " *Estás consumiendo demasiados cereales, reduce un poco.*"
+                    )
 
     revisar_consumo("proteinas", proteinas, rec["proteinas"],
-        " Buen consumo de proteínas.",
-        " *Incluye más proteínas magras como pollo, pescado, huevo.*",
-        " *Reduce tu exceso de proteínas.*"
-    )
+                    " Buen consumo de proteínas.",
+                    " *Incluye más proteínas magras como pollo, pescado, huevo.*",
+                    " *Reduce tu exceso de proteínas.*"
+                    )
 
     revisar_consumo("frutas", frutas, rec["frutas"],
-        " Buen consumo de frutas.",
-        " *Consume más frutas frescas.*",
-        " *Demasiada fruta puede aumentar el azúcar natural.*"
-    )
+                    " Buen consumo de frutas.",
+                    " *Consume más frutas frescas.*",
+                    " *Demasiada fruta puede aumentar el azúcar natural.*"
+                    )
 
     revisar_consumo("verduras", verduras, rec["verduras"],
-        " Buen consumo de verduras.",
-        " *Necesitas más verduras.*",
-        " *Estás consumiendo demasiadas verduras (raro, pero posible).*"
-    )
+                    " Buen consumo de verduras.",
+                    " *Necesitas más verduras.*",
+                    " *Estás consumiendo demasiadas verduras (raro, pero posible).*"
+                    )
 
     revisar_consumo("leche", leche, rec["leche"],
-        " Buen consumo de lácteos.",
-        " *Incluye una porción de leche o derivados.*",
-        " *Estás consumiendo demasiados lácteos.*"
-    )
+                    " Buen consumo de lácteos.",
+                    " *Incluye una porción de leche o derivados.*",
+                    " *Estás consumiendo demasiados lácteos.*"
+                    )
 
     revisar_consumo("azúcar", azucar, rec["azucar"],
-        " Buen control de azúcar.",
-        " Tu consumo de azúcar es bajo.",
-        " *Reduce urgentemente tus niveles de azúcar.*"
-    )
+                    " Buen control de azúcar.",
+                    " Tu consumo de azúcar es bajo.",
+                    " *Reduce urgentemente tus niveles de azúcar.*"
+                    )
 
     revisar_consumo("leguminosas", leguminosas, rec["leguminosas"],
-        " Buen consumo de leguminosas.",
-        " *Incluye más frijoles, lentejas o garbanzos en tu dieta.*",
-        " *Consumo excesivo de leguminosas.*"
-    )
+                    " Buen consumo de leguminosas.",
+                    " *Incluye más frijoles, lentejas o garbanzos en tu dieta.*",
+                    " *Consumo excesivo de leguminosas.*"
+                    )
 
     revisar_consumo("agua", agua, rec["agua"],
-        " Excelente hidratación.",
-        " *Te falta beber más agua, mínimo 2 litros diarios.*",
-        " *Estás tomando demasiada agua.*"
-    )
+                    " Excelente hidratación.",
+                    " *Te falta beber más agua, mínimo 2 litros diarios.*",
+                    " *Estás tomando demasiada agua.*"
+                    )
 
     return render_template("panelControl.html", recomendaciones=recomendaciones)
-
 
 
 @app.route("/analisisdecomida")
 def analisis():
     return render_template("analisis.html")
 
+
 def traducir(texto):
     return GoogleTranslator(source='es', target='en').translate(texto)
 
+
 @app.route('/search', methods=['POST'])
 def search_alimento():
+
     alimento_name = request.form.get('alimento_name', '').strip().lower()
 
     if not alimento_name:
@@ -255,7 +259,6 @@ def search_alimento():
         return redirect(url_for('analisis'))
 
 
-
 @app.route("/calculadoraGET")
 def calculadoraGET():
     return render_template("calculadoraGET.html")
@@ -300,15 +303,17 @@ def calcular_GET():
         actividad=actividad
     )
 
+
 @app.route("/calculadoraIMC")
 def calculadoraIMC():
     return render_template("calculadoraIMC.html")
+
 
 @app.route("/calcularIMC", methods=["POST"])
 def calcular_IMC():
     try:
         peso = float(request.form["peso"])
-        altura = float(request.form["altura"]) / 100  
+        altura = float(request.form["altura"]) / 100
 
         imc = peso / (altura * altura)
 
@@ -323,6 +328,7 @@ def calcular_IMC():
 def calculadoraMACRO():
     return render_template("calculadoraMACRO.html")
 
+
 @app.route("/macroscalculados", methods=['POST'])
 def macroscalculados():
 
@@ -333,7 +339,7 @@ def macroscalculados():
         genero = request.form['genero']
         actividad = request.form['actividad']
         objetivo = request.form['objetivo']
-        
+
         if objetivo == "mantener":
             calorias = 0
         else:
@@ -395,6 +401,7 @@ def calcular_macros(peso, altura, edad, genero, actividad, objetivo, calorias):
 def calculadoraPI():
     return render_template("calculadoraPCI.html")
 
+
 @app.route("/calcularPCI", methods=["POST"])
 def calcular_PCI():
     try:
@@ -418,6 +425,7 @@ def calcular_PCI():
 @app.route("/calculadoraTMB")
 def calculadoraTMB():
     return render_template("calculadoraTMB.html")
+
 
 @app.route("/calcularTMB", methods=["POST"])
 def calcular_TMB_route():
@@ -447,32 +455,33 @@ def crearcuenta():
 @app.route('/registrame', methods=['POST'])
 def registrame():
 
-    
     nombre = request.form.get("nombre")
     apellido = request.form.get("apellidos")
     email = request.form.get("email")
     password = request.form.get("pasword")
-    
+
     if not nombre or not email or not password:
-        flash("Todos los campos son obligatorios", "error")  
+        flash("Todos los campos son obligatorios", "error")
         return render_template("crearcuenta.html")
 
     Usuarios_registrados[email] = {
         "nombre": nombre,
         "password": password
-        }
-    
+    }
 
     flash(f"Tu cuenta ha sido creada, {nombre}")
     return redirect("/interfaz")
+
 
 @app.route("/recetas")
 def recetas():
     return render_template("recetassaludables.html")
 
+
 @app.route("/interfaz")
 def interfaz():
     return render_template("interfazinicio.html")
+
 
 @app.route("/educacion")
 def educacion():
