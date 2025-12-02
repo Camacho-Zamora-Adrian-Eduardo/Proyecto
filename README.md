@@ -1,6 +1,12 @@
 # Documentacion la NutriApp
 ### Objetivos
 Nuestro objetivo principal de la app de nutrición es ayudar a las personas a mejorar sus hábitos alimenticios y su salud, usando la tecnología para que sea más fácil llevar un control de lo que comen.
+
+#### Comando para la consola
+pip install requests flask
+
+pip install deep_translator
+
 ### Integrantes
 
 #### *Integrante 1*
