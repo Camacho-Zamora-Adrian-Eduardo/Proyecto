@@ -4,6 +4,7 @@ Nuestro objetivo principal de la app de nutrición es ayudar a las personas a me
 
 #### Comando para la consola
 pip install requests flask
+
 pip install deep_translator
 
 ### Integrantes
